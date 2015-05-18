@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:BpmnDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://stp.eclipse.org/bpmn" iD="activeRedundancyTactic" name="activeRedundancyTactic">
+  <pools iD="activeRedundancyPool" name="activeRedundancyPool">
+    <vertices xsi:type="bpmn:SubProcess" iD="activeRedundancy" name="activeRedundancy">
+      <vertices xsi:type="bpmn:Activity" iD="activeRedundancyStart" outgoingEdges="seqActiveRedundancy1" name="activeRedundancyStart" activityType="EventStartEmpty"/>
+      <vertices xsi:type="bpmn:Activity" iD="redundancyActivator" outgoingEdges="seqActiveRedundancy2" incomingEdges="seqActiveRedundancy1" name="redundancyActivator"/>
+      <sequenceEdges iD="seqActiveRedundancy1" name="seqActiveRedundancy1" source="activeRedundancyStart" target="redundancyActivator"/>
+      <sequenceEdges iD="seqActiveRedundancy2" name="seqActiveRedundancy2" source="redundancyActivator" target="activeRedundancyEnd"/>
+      <eventHandlers iD="activeRedundancyEnd" incomingEdges="seqActiveRedundancy2" name="activeRedundancyEnd" activityType="EventEndEmpty"/>
+    </vertices>
+  </pools>
+</bpmn:BpmnDiagram>

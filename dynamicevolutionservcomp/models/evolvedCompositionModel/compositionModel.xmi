@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:BpmnDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://stp.eclipse.org/bpmn" xmi:id="_f0eYMeBmEeGx9pu7hF_iGg" iD="OrangeCountryBookStore" name="OrangeCountryBookStore">
+  <pools iD="OrangeCountryBookStorePool" name="OrangeCountryBookStorePool">
+    <vertices xsi:type="bpmn:Activity" iD="start" outgoingEdges="seq1 seq10" name="start" activityType="EventStartEmpty"/>
+    <vertices xsi:type="bpmn:Activity" iD="BarnesAndNobleShoppingCart" outgoingEdges="seq12" incomingEdges="seq11" name="BarnesAndNobleShoppingCart"/>
+    <vertices xsi:type="bpmn:Activity" outgoingEdges="seq15" incomingEdges="seq14" documentation="GoogleAuthentication" name="GoogleAuthentication"/>
+    <vertices xsi:type="bpmn:Activity" iD="paymentCalculator" outgoingEdges="seq16" incomingEdges="seq15" name="paymentCalculator"/>
+    <vertices xsi:type="bpmn:Activity" iD="bankOfAmericaCreditCardPayment" outgoingEdges="seq17" incomingEdges="seq16" name="bankOfAmericaCreditCardPayment"/>
+    <vertices xsi:type="bpmn:Activity" iD="eMailInvoice" outgoingEdges="seq20" incomingEdges="seq19" name="eMailInvoice"/>
+    <vertices xsi:type="bpmn:Activity" iD="UPSShipping" outgoingEdges="seq22" incomingEdges="seq21" name="UPSShipping"/>
+    <vertices xsi:type="bpmn:Activity" iD="end" incomingEdges="seq8 seq25" name="end" activityType="EventEndEmpty"/>
+    <vertices xsi:type="bpmn:Activity" iD="gateway1" outgoingEdges="seq13 seq14" incomingEdges="seq12" name="gateway1" activityType="GatewayDataBasedExclusive"/>
+    <vertices xsi:type="bpmn:Activity" iD="gateway12" outgoingEdges="seq18 seq23" incomingEdges="seq17" name="gateway2" activityType="GatewayDataBasedExclusive"/>
+    <vertices xsi:type="bpmn:Activity" iD="gateway3" outgoingEdges="seq19 seq21" incomingEdges="seq18" name="gateway3" activityType="GatewayParallel"/>
+    <vertices xsi:type="bpmn:Activity" iD="gateway4" outgoingEdges="seq25" incomingEdges="seq23 seq24" name="gateway4" activityType="GatewayDataBasedExclusive"/>
+    <vertices xsi:type="bpmn:Activity" iD="gateway5" outgoingEdges="seq24" incomingEdges="seq20 seq22" name="gateway5" activityType="GatewayParallel"/>
+    <vertices xsi:type="bpmn:SubProcess" iD="BarnesAndNobleBooks_DeceptionTactic" outgoingEdges="seq11" incomingEdges="seq10" name="BarnesAndNobleBooks_DeceptionTactic" activityType="SubProcess">
+      <vertices xsi:type="bpmn:Activity" iD="startEv" outgoingEdges="seqEv1" name="startEv" activityType="EventStartEmpty"/>
+      <vertices xsi:type="bpmn:Activity" iD="endEv" incomingEdges="seqEv6" name="endEv" activityType="EventEndEmpty"/>
+      <vertices xsi:type="bpmn:Activity" iD="gatewayEv1" outgoingEdges="seqEv2 seqEv3" incomingEdges="seqEv1" name="gatewayEv1" activityType="GatewayParallel"/>
+      <vertices xsi:type="bpmn:Activity" iD="gatewayEv2" outgoingEdges="seqEv6" incomingEdges="seqEv4 seqEv5" name="gatewayEv2" activityType="GatewayParallel"/>
+      <vertices xsi:type="bpmn:SubProcess" iD="Deception" outgoingEdges="seqEv4" incomingEdges="seqEv2" name="Deception">
+        <vertices xsi:type="bpmn:Activity" iD="LogIntrudersActivities" outgoingEdges="seqDeception4" incomingEdges="seqDeception2" name="LogIntrudersActivities" activityType="SubProcess"/>
+        <vertices xsi:type="bpmn:Activity" iD="ManageSensors" outgoingEdges="seqDeception5" incomingEdges="seqDeception3" name="ManageSensors"/>
+        <vertices xsi:type="bpmn:Activity" iD="startDeception" outgoingEdges="seqDeception1" name="startDeception" activityType="EventStartEmpty"/>
+        <vertices xsi:type="bpmn:Activity" iD="endDeception" incomingEdges="seqDeception7" name="endDeception" activityType="EventEndEmpty"/>
+        <vertices xsi:type="bpmn:Activity" iD="gatewayDeception1" outgoingEdges="seqDeception2 seqDeception3" incomingEdges="seqDeception1" documentation="" name="gatewayDeception1" activityType="GatewayParallel"/>
+        <vertices xsi:type="bpmn:Activity" iD="gatewayDeception2" outgoingEdges="seqDeception6" incomingEdges="seqDeception4 seqDeception5" name="gatewayDeception2" activityType="GatewayParallel"/>
+        <sequenceEdges iD="seqDeception1" name="seqDeception1" source="startDeception" target="gatewayDeception1"/>
+        <sequenceEdges iD="seqDeception2" name="seqDeception2" ncname="" source="gatewayDeception1" target="LogIntrudersActivities"/>
+        <sequenceEdges iD="seqDeception3" name="seqDeception3" source="gatewayDeception1" target="ManageSensors"/>
+        <sequenceEdges iD="seqDeception4" name="seqDeception4" ncname="" source="LogIntrudersActivities" target="gatewayDeception2"/>
+        <sequenceEdges iD="seqDeception5" name="seqDeception5" source="ManageSensors" target="gatewayDeception2"/>
+        <sequenceEdges iD="seqDeception6" name="seqDeception6" source="gatewayDeception2" target="SendEmailToSystemAdministrator"/>
+        <sequenceEdges iD="seqDeception7" name="seqDeception7" source="SendEmailToSystemAdministrator" target="endDeception"/>
+        <eventHandlers iD="SendEmailToSystemAdministrator" outgoingEdges="seqDeception7" incomingEdges="seqDeception6" name="SendEmailToSystemAdministrator"/>
+      </vertices>
+      <vertices xsi:type="bpmn:SubProcess" iD="BarnesAndNobleBooks" outgoingEdges="seqEv5" incomingEdges="seq13 seqEv3" name="BarnesAndNobleBooks">
+        <vertices xsi:type="bpmn:Activity" iD="startBarnesAndNoble" name="startBarnesAndNoble" activityType="EventStartEmpty"/>
+        <vertices xsi:type="bpmn:Activity" iD="endBarnesAndNoble" name="endBarnesAndNoble" activityType="EventEndEmpty"/>
+        <vertices xsi:type="bpmn:Activity" iD="searchBook" outgoingEdges="seq2" incomingEdges="seq1 seq9" name="searchBook"/>
+        <vertices xsi:type="bpmn:Activity" iD="showBookInfo" outgoingEdges="seq6" incomingEdges="seq4" name="showBookInfo"/>
+        <vertices xsi:type="bpmn:Activity" iD="showRelatedTitles" outgoingEdges="seq7" incomingEdges="seq5" name="showRelatedTitles"/>
+        <vertices xsi:type="bpmn:Activity" iD="gatewayBarnesAndNoble1" outgoingEdges="seq9 seq3" incomingEdges="seq2" name="gatewayBarnesAndNoble1" activityType="GatewayDataBasedExclusive"/>
+        <vertices xsi:type="bpmn:Activity" iD="gatewayBarnesAndNoble2" outgoingEdges="seq4 seq5" incomingEdges="seq3" name="gatewayBarnesAndNoble2" activityType="GatewayParallel"/>
+        <vertices xsi:type="bpmn:Activity" iD="gatewayBarnesAndNoble3" outgoingEdges="seq8" incomingEdges="seq6 seq7" name="gatewayBarnesAndNoble3" activityType="GatewayParallel"/>
+        <sequenceEdges iD="seq1" name="seq1" source="start" target="searchBook"/>
+        <sequenceEdges iD="seq2" name="seq2" source="searchBook" target="gatewayBarnesAndNoble1"/>
+        <sequenceEdges iD="seq9" name="seq9" source="gatewayBarnesAndNoble1" target="searchBook"/>
+        <sequenceEdges iD="seq3" name="seq3" source="gatewayBarnesAndNoble1" target="gatewayBarnesAndNoble2"/>
+        <sequenceEdges iD="seq4" name="seq4" source="gatewayBarnesAndNoble2" target="showBookInfo"/>
+        <sequenceEdges iD="seq5" name="seq5" source="gatewayBarnesAndNoble2" target="showRelatedTitles"/>
+        <sequenceEdges iD="seq6" name="seq6" source="showBookInfo" target="gatewayBarnesAndNoble3"/>
+        <sequenceEdges iD="seq7" name="seq7" source="showRelatedTitles" target="gatewayBarnesAndNoble3"/>
+        <sequenceEdges iD="seq8" name="seq8" source="gatewayBarnesAndNoble3" target="end"/>
+      </vertices>
+      <sequenceEdges iD="seqEv1" name="seqEv1" source="startEv" target="gatewayEv1"/>
+      <sequenceEdges iD="seqEv2" name="seqEv2" source="gatewayEv1" target="Deception"/>
+      <sequenceEdges iD="seqEv3" name="seqEv3" source="gatewayEv1" target="BarnesAndNobleBooks"/>
+      <sequenceEdges iD="seqEv4" name="seqEv4" source="Deception" target="gatewayEv2"/>
+      <sequenceEdges iD="seqEv5" name="seqEv5" source="BarnesAndNobleBooks" target="gatewayEv2"/>
+      <sequenceEdges iD="seqEv6" name="seqEv6" source="gatewayEv2" target="endEv"/>
+    </vertices>
+    <sequenceEdges iD="seq10" name="seq10" source="start" target="BarnesAndNobleBooks_DeceptionTactic"/>
+    <sequenceEdges iD="seq11" name="seq11" source="BarnesAndNobleBooks_DeceptionTactic" target="BarnesAndNobleShoppingCart"/>
+    <sequenceEdges iD="seq12" name="seq12" source="BarnesAndNobleShoppingCart" target="gateway1"/>
+    <sequenceEdges iD="seq13" name="seq13" source="gateway1" target="BarnesAndNobleBooks"/>
+    <sequenceEdges iD="seq14" name="seq14" source="gateway1" target="//@pools.0/@vertices.2"/>
+    <sequenceEdges iD="seq15" name="seq15" source="//@pools.0/@vertices.2" target="paymentCalculator"/>
+    <sequenceEdges iD="seq16" name="seq16" source="paymentCalculator" target="bankOfAmericaCreditCardPayment"/>
+    <sequenceEdges iD="seq17" name="seq17" source="bankOfAmericaCreditCardPayment" target="gateway12"/>
+    <sequenceEdges iD="seq18" name="seq18" source="gateway12" target="gateway3"/>
+    <sequenceEdges iD="seq19" name="seq19" source="gateway3" target="eMailInvoice"/>
+    <sequenceEdges iD="seq20" name="seq20" source="eMailInvoice" target="gateway5"/>
+    <sequenceEdges iD="seq21" name="seq21" source="gateway3" target="UPSShipping"/>
+    <sequenceEdges iD="seq22" name="seq22" source="UPSShipping" target="gateway5"/>
+    <sequenceEdges iD="seq23" name="seq23" source="gateway12" target="gateway4"/>
+    <sequenceEdges iD="seq24" name="seq24" source="gateway5" target="gateway4"/>
+    <sequenceEdges iD="seq25" name="seq25" source="gateway4" target="end"/>
+  </pools>
+</bpmn:BpmnDiagram>

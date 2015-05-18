@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:BpmnDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://stp.eclipse.org/bpmn" iD="introduceConcurrencyTactic" name="introduceConcurrencyTactic">
+  <pools iD="introduceConcurrencyPool" name="introduceConcurrencyPool">
+    <vertices xsi:type="bpmn:SubProcess" iD="introduceConcurrency" name="introduceConcurrency">
+      <vertices xsi:type="bpmn:SubProcess" iD="concurrencyManager" outgoingEdges="seqIntroduceConcurrency2" incomingEdges="seqIntroduceConcurrency1" name="concurrencyManager"/>
+      <vertices xsi:type="bpmn:Activity" iD="introduceConcurrencyStart" outgoingEdges="seqIntroduceConcurrency1" name="introduceConcurrencyStart" ncname="" activityType="EventStartEmpty"/>
+      <vertices xsi:type="bpmn:Activity" iD="introduceConcurrencyEnd" incomingEdges="seqIntroduceConcurrency2" name="introduceConcurrencyEnd" activityType="EventEndEmpty"/>
+      <sequenceEdges iD="seqIntroduceConcurrency1" name="seqIntroduceConcurrency1" source="introduceConcurrencyStart" target="concurrencyManager"/>
+      <sequenceEdges iD="seqIntroduceConcurrency2" name="seqIntroduceConcurrency2" source="concurrencyManager" target="introduceConcurrencyEnd"/>
+    </vertices>
+  </pools>
+</bpmn:BpmnDiagram>

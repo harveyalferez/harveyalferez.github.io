@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:BpmnDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://stp.eclipse.org/bpmn" iD="shadowOperationTactic" name="shadowOperationTactic">
+  <pools iD="shadowOperationPool" name="shadowOperationPool">
+    <vertices xsi:type="bpmn:SubProcess" iD="shadowOperation" name="shadowOperation">
+      <vertices xsi:type="bpmn:Activity" iD="shadowOperationStart" outgoingEdges="seqShadowOperation1" name="shadowOperationStart" activityType="EventStartEmpty"/>
+      <vertices xsi:type="bpmn:Activity" iD="shadowOperationActivator" outgoingEdges="seqShadowOperation2" incomingEdges="seqShadowOperation1" name="shadowOperationActivator"/>
+      <sequenceEdges iD="seqShadowOperation1" name="seqShadowOperation1" source="shadowOperationStart" target="shadowOperationActivator"/>
+      <sequenceEdges iD="seqShadowOperation2" name="seqShadowOperation2" source="shadowOperationActivator" target="shadowOperationEnd"/>
+      <eventHandlers iD="shadowOperationEnd" incomingEdges="seqShadowOperation2" name="shadowOperationEnd" activityType="EventEndEmpty"/>
+    </vertices>
+  </pools>
+</bpmn:BpmnDiagram>

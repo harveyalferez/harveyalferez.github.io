@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Dynamic Adaptation of Service Compositions with Variability Models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type="text/css">
+<!--
+.Estilo2 {font-size: small}
+.Estilo4 {font-size: x-small}
+.Estilo5 {font-family: Arial, Helvetica, sans-serif}
+.Estilo6 {
+	color: #FF0000;
+	font-weight: bold;
+}
+.Estilo7 {color: #FFFFFF}
+.Estilo8 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+</head>
+
+<body>
+<h1 align="center" class="Estilo5"><strong>Dynamic Adaptation of Service Compositions with Variability Models</strong></h1>
+<p align="center" class="Estilo5">G.H. Alf&eacute;rez (a) , 
+  V. Pelechano (b), R. Mazo (c), C. Salinesi (c), D. Diaz (c)<br>
+  <br>
+  <span class="Estilo2">a. Facultad de Ingenier&iacute;a y Tecnolog&iacute;a, Universidad de Montemorelos, Apartado 16-5, 67500, Montemorelos, Mexico<br>
+  b. Centro de Investigaci&oacute;n en M&eacute;todos de Producci&oacute;n de Software (ProS), Universitat Polit&egrave;cnica de Val&egrave;ncia, Cam&iacute; de Vera s/n, E-46022 Valencia, Spain<br>
+  c. CRI, Panth&eacute;on Sorbonne University, 90 rue de Tolbiac, 75013 Paris, France</span><br>
+</p>
+<p align="center" class="Estilo5">&nbsp;</p>
+<ul class="Estilo5">
+  <li><a href="#algorithm">Improved Algorithm for the Semi-Aliveness Verification Criterion</a></li>
+  <li><a href="#video">Framework Demonstration</a></li>
+  <li><a href="#GQM1and2">Details of the Experiment Related to GQM Model 1 and GQM Model 2 </a></li>
+</ul>
+<hr>
+<h2 class="Estilo5">Improved Algorithm for the Semi-Aliveness Verification Criterion<a name="algorithm"></a> </h2>
+<p align="justify" class="Estilo5">In case  all variables are Boolean (in the variability and context models), it is even possible to propose an improved algorithm for the Semi-aliveness verification criterion. Instead of asking the solver for several solutions (until two solutions differ on at least one context variable and one variability variable), it is possible to find the first solution of a unique Constraint Satisfaction Problem (CSP). This CSP consists on two sub-CSPs: the original one and its mirror. </p>
+<p align="justify" class="Estilo5">The set of variables in the mirror CSP is a renaming of the set of the original variables: V' is the mirror set of variables in the variability model and C' is the mirror set of variables in the context model. The constraints of the mirror CSP are the same as in the original CSP but are applied to the corresponding renamed variables. </p>
+<p align="justify" class="Estilo5">The two sub-CSPs are linked with constraints as follows: a first constraint states that the context variables should be different in both CSPs (i.e., C != C') and similarly for the variables (i.e., V != V'). If a solution exists, then two different contexts (for a partition) entail two different variable values (i.e., two different alternatives from the variability point of view). In other words, it means that the variability model is not insensitive to context changes. Since C is a vector of variables, the constraint C != C' is TRUE if and only if there is at least one variable in C different from its mirror variable in C' (similarly for V != V'). </p>
+<p align="justify" class="Estilo5">We represent the sum of C and the sum of C' as two polynomials to avoid that changes of different variables values are considered by the solver as the same change when other variables values change; in other words, to constraint the fact that the order of the Boolean variables is important. Finally, even if we duplicate the size of the problem, we only need one request to the solver (the first solution that is found is enough).</p>
+<p align="justify" class="Estilo5"> The algorithm is described as follows:</p>
+<blockquote>
+  <p align="justify" class="Estilo8">semiAliveness_boolean(Variability Model VM, Context Model CM, Solver S){<br>	
+    <span class="Estilo7">yyy</span>S.load(VM);<br>
+    <span class="Estilo7">yyy</span>S.load(CM);<br>
+    <span class="Estilo7">yyy</span>Create the mirror context model CM' (C1', C2', ... Cn') corresponding to the context model CM (C1, C2, ... Cn);<br>
+    <span class="Estilo7">yyy</span>S.load(CM');<br>
+    <span class="Estilo7">yyy</span>Create the mirror variability model VM' (V1', V2', ... Vm') corresponding to the variability model VM (V1, V2, ... Vm);<br>
+    <span class="Estilo7">yyy</span>S.load(VM');<br>
+    <span class="Estilo7">yyy</span>S.loadNewConstraint(C1 * 1 + C2 * 2 + C3 * 4 + ...+ Cn * n^2 &lt;&gt; C1' * 1 + C2' * 2 + C3' * 4 + ...+ Cn' * n^2);<br>
+    <span class="Estilo7">yyy</span>S.loadNewConstraint(V1 * 1 + V2 * 2 + V3 * 4 + ...+ Vm * m^2 &lt;&gt; V1' * 1 + V2' * 2 + V3' * 4 + ...+ Vm' * m^2);<br>
+    <span class="Estilo7">yyy</span>Solution sol = S.giveOneSolution();<br>
+    <span class="Estilo7">yyy</span>If (sol != FALSE){<br>
+    <span class="Estilo7">yyyyyy</span>Write (&quot;The Boolean variability model &quot;+VM+&quot; is NOT insensitive to changes into the Bolean context model &quot;+ CM);<br>
+    <span class="Estilo7">yyy</span>} Else {<br>
+    <span class="Estilo7">yyyyyy</span>Write (&quot;The Boolean variability model &quot;+VM+&quot; is insensitive to changes into the Bolean context model &quot;+ CM);<br>
+    <span class="Estilo7">yyy</span>}<br>
+  }</p>
+</blockquote>
+<hr>
+<h2 class="Estilo5">Framework Demonstration<a name="video"></a></h2>
+<p align="justify" class="Estilo5">We  created a video demonstration of our proposed framework for the dynamic adaptation of service compositions with variability models. In this demonstration, MoRE-WS uses a variability model to guide two dynamic adaptations in our non-trivial running example when the <em>B&amp;NUnavailable</em> and the <em>UPSHiExecTime</em> context conditions are fulfilled in a tight time frame. <span class="Estilo6">NOTICE:</span> <strong>In order to watch this video on HD, please open it directly on <a href="https://vimeo.com/61633712" target="_blank">Vimeo</a>.</strong>
+
+<p align="center" class="Estilo5">
+  <iframe src="http://player.vimeo.com/video/61633712" width="1068" height="601" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<hr>
+<h2 class="Estilo5">Details of the Experiment Related to GQM Model 1 and GQM Model 2 <a name="GQM1and2" id="GQM1and2"></a></h2>
+<p class="Estilo5"><strong>GQM model 1</strong> has the following goal: &ldquo;Efficient generation time of variability model configurations from the systems analyst&rsquo;s viewpoint.&rdquo; This model has the following related research question (<strong>Q1</strong>): &ldquo;What is the required time to generate the adaptation space?&rdquo;</p>
+<p class="Estilo5"><strong>GQM model 2</strong> has the following goal: &ldquo;Reduce the complexity of the adaptation space from the systems analyst's viewpoint.&rdquo; This model has the following related research question (<strong>Q2</strong>): &ldquo;Do a small variability model and a set of resolutions can be used to describe a large adaptation space?&rdquo;</p>
+<p class="Estilo5">In order to answer Q1 and Q2, we carried out an experiment using the variability model in our running example with 36 features and nine resolutions. <a href="http://www.pros.upv.es/m4spl/index.html" target="_blank"><strong>MOSKitt4SPL</strong></a> files that were used in this experiment can be downloaded <strong><a href="MoRE_WS_Full_Case.zip" target="_blank">here</a></strong>. This compressed file contains the variability model, the resolutions and the generated adaptation space (described as a state machine). Please decompress it and import the decompressed folder into the workspace of MOSKitt4SPL.</p>
+<p align="justify" class="Estilo5">The following  MOSKitt4SPL's screenshots show the set  of resolutions that were executed. Each resolution has a unique identifier ID, where ID = 1...9:</p>
+<p align="justify" class="Estilo5"><strong>R1<span class="Estilo4">B&amp;NUnavailable</span></strong> is triggered when the <em>Barnes &amp; Noble Books</em> service operation is unavailable. In this case, the <em>Amazon Books</em> functionality is activated. Since the <em>Amazon Books</em> feature requires the<em> Amazon Shopping Cart</em> feature, then the <em>Amazon Shopping Cart</em> functionality is also activated. <strong>R2<span class="Estilo4">AmazonHiRespTime</span></strong> is triggered when the response time of the <em>Amazon Books</em> service operation is high. In this case, the <em>Barnes &amp; Noble Books</em> functionality is activated. Since the <em>Barnes &amp; Noble Books</em> feature requires the <em>Barnes &amp; Noble Shopping Cart</em> feature, then the <em>Barnes &amp; Noble Shopping Cart</em> functionality is also activated:</p>
+<p align="center" class="Estilo5"><img src="Resolutions1.png" width="710" height="848"></p>
+<p align="justify"><span class="Estilo5"><strong>R3<span class="Estilo4">B&amp;NShoppingCartUnavailable</span></strong> is triggered when the<em> Barnes &amp; Noble Shopping Cart</em> service operation is unavailable. In this case, the <em>Amazon Shopping Cart</em> functionality is activated. Since the<em> Amazon Shopping Cart</em> works with <em>Amazon Books</em>, then the<em> Amazon Books</em> functionality is also activated. <strong>R4<span class="Estilo4">AmazonShoppingCartUnavailable</span></strong> is triggered when the <em>Amazon Shopping Cart</em> service operation is unavailable. In this case, the <em>Barnes &amp; Noble Shopping Cart</em> service operation is activated. Since the <em>Barnes &amp; Noble Shopping Cart</em> functionality works with <em>Barnes &amp; Noble Books</em>, then the <em>Barnes &amp; Noble Books</em> functionality is also activated:</span>
+</p>
+<div align="center"><img src="Resolutions2.png" width="710" height="797"></div>
+
+<p align="justify" class="Estilo5"><strong>R5<span class="Estilo4">UPSHiExecTime^DHLExeTimeLowerThanFedEX</span></strong> is triggered when the exection time of the <em>UPS Shipping</em> service operation is higher than 3,000 milliseconds AND the execution time of the <em>DHL Delivery</em> service operation is lower than the execution time of the <em>FedEX Express</em> service operation. In this case, the <em>UPS Shipping</em> functionality is deactivated and the <em>DHL Delivery</em> functionality is activated. <strong>R6<span class="Estilo4">DHLUnavailable^FedExExeTimeLowerThanUPS</span></strong> is triggered when the <em>DHL Delivery</em> service operation is unavailable AND the execution time of the <em>FedEX Express</em> service operation is lower than the execution of the <em>UPS Shipping</em> service operation. In this case, the<em> FedEX Express</em> functionality is activated and the <em>DHL Delivery</em> functionality is deactivated. <strong>R7<span class="Estilo4">BankOfAmericaHiExeTime^WellsFargoThroughputGreaterThanChaseBanking</span></strong> is triggered when the execution time of the <em>Bank of America Credit Card Payment</em> service operation is higher than 2,600 millisecons AND the throughput for the <em>Wells Fargo Online</em> service operation is greater than the throughput for the <em>Chase Banking</em> service operation. In this case, the <em>Wells Fargo</em> <em>Online</em> functionality is activated and the <em>Bank of America Credit Card Payment</em> functionality is deactivated. <strong>R8<span class="Estilo4">EmailInvoiceHiRespTime</span></strong> is triggered when the response time of the <em>E-mail Invoice</em> service operation is greater than 1,000 milliseconds. In this case, the <em>SMS Invoice</em> functionality is activated and the <em>E-mail</em> <em>Invoice</em> functionality is deactivated. <strong>R9<span class="Estilo4">SMSInvoiceHiLatency</span></strong> is triggered when the <em>SMS Invoice</em> service operation has a latency higher than 5 milliseconds. In this case, the <em>E-mail Invoice</em> functionality is activated and the <em>SMS Invoice</em> functionality is deactivated:</p>
+<p align="center" class="Estilo5"><img src="Resolutions3.png" width="710" height="734"></p>
+<p align="justify" class="Estilo5">The initial current configuration has the following <em>inactive</em> features: <em>Amazon Books, Book Searching, Book Description, Related Titles, Amazon Shopping Cart, Wells Fargo Online, Chase Banking, SMS Invoice, FedEX Express, and DHL Delivery</em>. </p>
+<p align="justify" class="Estilo5">The diagram with the generated adaptation space can be downloaded <a href="StateMachine.png" target="_blank"><strong>here</strong></a> (<em>states</em> express configurations and <em>transitions</em> express resolutions). See the configurations' details on StateMachine.sm4spl in this <strong><a href="MoRE_WS_Full_Case.zip">compressed file</a></strong>.</p>
+<p align="justify" class="Estilo5"><strong>MOSKitt4SPL generated an adaptation space with 40 variability 
+  model configurations and 360 transitions among configurations in <em>less than three seconds</em>.</strong> This is evident in the <a href="#video"><strong>video demonstration</strong></a>. </p>
+<hr>
+</body>
+</html>

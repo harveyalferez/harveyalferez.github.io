@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FeatureModelPackage:FeatureModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FeatureModelPackage="http://es.gvcase.featuremodelpackage" Name="FM">
+  <Features Name="On-line Product Shopping" featureNotation="simple">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.1" From="//@Features.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.2" From="//@Features.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.3" From="//@Features.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.4" From="//@Features.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.5" From="//@Features.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.30" From="//@Features.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.33" From="//@Features.0"/>
+  </Features>
+  <Features Name="Product Management">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.6" From="//@Features.1"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.7" From="//@Features.1"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.8" From="//@Features.1"/>
+  </Features>
+  <Features Name="Shopping Cart">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.16" From="//@Features.2"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.17" From="//@Features.2"/>
+  </Features>
+  <Features Name="User Authentication">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.20" From="//@Features.3"/>
+  </Features>
+  <Features Name="Total Calculation">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.21" From="//@Features.4"/>
+  </Features>
+  <Features Name="Payment">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.22" From="//@Features.5"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.23" From="//@Features.5"/>
+  </Features>
+  <Features Name="Look for a Product">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Alternative" LowerBound="1" UpperBound="1"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.9" From="//@Features.6/@CardinalityBased_Relationships.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.10" From="//@Features.6/@CardinalityBased_Relationships.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.26" From="//@Features.6"/>
+  </Features>
+  <Features Name="Look Again for a Product"/>
+  <Features Name="Related Products"/>
+  <Features Name="HK Wholesale Supplier">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.11" From="//@Features.9"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.12" From="//@Features.9"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.13" From="//@Features.9"/>
+  </Features>
+  <Features Name="American Supplies Co.">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.14" From="//@Features.10"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.15" From="//@Features.10"/>
+    <Constraints xsi:type="FeatureModelPackage:Requires" From="//@Features.10" To="//@Features.8"/>
+    <Constraints xsi:type="FeatureModelPackage:Requires" From="//@Features.10" To="//@Features.18"/>
+  </Features>
+  <Features Name="Search Prodcut"/>
+  <Features Name="Show Product Info"/>
+  <Features Name="Show Related Products"/>
+  <Features Name="Product Searching"/>
+  <Features Name="Product Description"/>
+  <Features Name="Add a Product">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Alternative" LowerBound="1" UpperBound="1"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.18" From="//@Features.16/@CardinalityBased_Relationships.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.19" From="//@Features.16/@CardinalityBased_Relationships.0"/>
+  </Features>
+  <Features Name="Add More Products"/>
+  <Features Name="American Supplies Co. Shopping Cart"/>
+  <Features Name="HK Wholesale Supplier Shopping Cart">
+    <Constraints xsi:type="FeatureModelPackage:Requires" From="//@Features.19" To="//@Features.9"/>
+  </Features>
+  <Features Name="Google Authentication"/>
+  <Features Name="Payment Calculator"/>
+  <Features Name="Credit Card Payment">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Alternative" LowerBound="1" UpperBound="1"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.24" From="//@Features.22/@CardinalityBased_Relationships.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.25" From="//@Features.22/@CardinalityBased_Relationships.0"/>
+  </Features>
+  <Features Name="Validate Credit Card"/>
+  <Features Name="Barclays Bank Credit Card Payment"/>
+  <Features Name="Chase Banking"/>
+  <Features Name="Deception">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.27" From="//@Features.26"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.29" From="//@Features.26"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Mandatory" LowerBound="1" UpperBound="1" To="//@Features.28" From="//@Features.26"/>
+  </Features>
+  <Features Name="Log Intruder's Activities"/>
+  <Features Name="Manage Sensors"/>
+  <Features Name="Send E-mail to System Administrator"/>
+  <Features Name="Invoice Delivery">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Alternative" LowerBound="1" UpperBound="1"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.31" From="//@Features.30/@CardinalityBased_Relationships.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.32" From="//@Features.30/@CardinalityBased_Relationships.0"/>
+  </Features>
+  <Features Name="E-mail Invoice"/>
+  <Features Name="SMS Invoice"/>
+  <Features Name="Shipment">
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Alternative" LowerBound="1" UpperBound="1"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.35" From="//@Features.33/@CardinalityBased_Relationships.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.34" From="//@Features.33/@CardinalityBased_Relationships.0"/>
+    <CardinalityBased_Relationships xsi:type="FeatureModelPackage:Optional" UpperBound="1" To="//@Features.36" From="//@Features.33/@CardinalityBased_Relationships.0"/>
+  </Features>
+  <Features Name="FedEX Express"/>
+  <Features Name="UPS Shipping"/>
+  <Features Name="DHL Delivery"/>
+</FeatureModelPackage:FeatureModel>

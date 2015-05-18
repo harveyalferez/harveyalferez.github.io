@@ -1,0 +1,25 @@
+Info: CustomCategory:dynamic_evolutions: 10 mini seconds publishing element
+Info: CustomCategory:Introduction: 14 mini seconds publishing element
+Info: SupportingMaterial:About Us: 8 mini seconds publishing element
+Info: CustomCategory:Roles: 8 mini seconds publishing element
+Info: Role:Requirements Engineer: 65 mini seconds publishing element
+Info: Task:Create the Requirements Model: 13 mini seconds publishing element
+Info: Artifact:Requirements Model: 9 mini seconds publishing element
+Info: Role:Systems Analyst: 71 mini seconds publishing element
+Info: Task:Create the Rule Premises: 9 mini seconds publishing element
+Info: Task:Create the Tactics Models: 15 mini seconds publishing element
+Info: Task:Create the Weaving Model: 12 mini seconds publishing element
+Info: Artifact:Rules File: 9 mini seconds publishing element
+Info: Artifact:Tactic Models Expressed as Composition Models: 10 mini seconds publishing element
+Info: Artifact:Tactic Models Expressed as Feature Models: 11 mini seconds publishing element
+Info: Artifact:Weaving Model: 9 mini seconds publishing element
+Info: Role:Developer: 43 mini seconds publishing element
+Info: Task:Create the Fragments of WS-BPEL Code to Invoke Tactics: 9 mini seconds publishing element
+Info: Task:Implement the Service Operations for Tactics: 9 mini seconds publishing element
+Info: Artifact:Atomic Web Services: 12 mini seconds publishing element
+Info: Artifact:Composite Web Services: 9 mini seconds publishing element
+Info: Artifact:Fragments of WS-BPEL Code: 9 mini seconds publishing element
+Info: CustomCategory:Tasks: 10 mini seconds publishing element
+Info: CustomCategory:Tools: 7 mini seconds publishing element
+Info: ToolMentor:Tools: 24 mini seconds publishing element
+Info: : Publishing time: 0 minutes 1 seconds

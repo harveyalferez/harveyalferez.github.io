@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:BpmnDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://stp.eclipse.org/bpmn" iD="temporalSeparationTactic" name="temporalSeparationTactic">
+  <pools iD="temporalSeparationPool" name="temporalSeparationPool">
+    <vertices xsi:type="bpmn:SubProcess" iD="temporalSeparation" name="temporalSeparation">
+      <vertices xsi:type="bpmn:Activity" iD="separator" outgoingEdges="seqTemporalSeparation5" incomingEdges="seqTemporalSeparation2" name="separator"/>
+      <vertices xsi:type="bpmn:Activity" iD="timer" outgoingEdges="seqTemporalSeparation4" incomingEdges="seqTemporalSeparation3" name="timer"/>
+      <vertices xsi:type="bpmn:Activity" iD="startTemporalSeparation" outgoingEdges="seqTemporalSeparation1" name="startTemporalSeparation" activityType="EventStartEmpty"/>
+      <vertices xsi:type="bpmn:Activity" iD="endTemporalSeparation" incomingEdges="seqTemporalSeparation1 seqTemporalSeparation6" name="endTemporalSeparation" activityType="EventEndEmpty"/>
+      <vertices xsi:type="bpmn:Activity" iD="gatewayTemporalSeparation1" outgoingEdges="seqTemporalSeparation2 seqTemporalSeparation3" name="gatewayTemporalSeparation1" activityType="GatewayParallel"/>
+      <vertices xsi:type="bpmn:Activity" iD="gatewayTemporalSeparation2" outgoingEdges="seqTemporalSeparation6" incomingEdges="seqTemporalSeparation4 seqTemporalSeparation5" name="gatewayTemporalSeparation2" activityType="GatewayParallel"/>
+      <sequenceEdges iD="seqTemporalSeparation1" name="seqTemporalSeparation1" source="startTemporalSeparation" target="endTemporalSeparation"/>
+      <sequenceEdges iD="seqTemporalSeparation2" name="seqTemporalSeparation2" ncname="" source="gatewayTemporalSeparation1" target="separator"/>
+      <sequenceEdges iD="seqTemporalSeparation3" name="seqTemporalSeparation3" source="gatewayTemporalSeparation1" target="timer"/>
+      <sequenceEdges iD="seqTemporalSeparation4" name="seqTemporalSeparation4" ncname="" source="timer" target="gatewayTemporalSeparation2"/>
+      <sequenceEdges iD="seqTemporalSeparation5" name="seqTemporalSeparation5" ncname="" source="separator" target="gatewayTemporalSeparation2"/>
+      <sequenceEdges iD="seqTemporalSeparation6" name="seqTemporalSeparation6" source="gatewayTemporalSeparation2" target="endTemporalSeparation"/>
+    </vertices>
+  </pools>
+</bpmn:BpmnDiagram>

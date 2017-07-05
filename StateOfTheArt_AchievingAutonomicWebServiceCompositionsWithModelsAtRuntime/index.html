@@ -1,0 +1,3145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>Achieving Autonomic Web Service Compositions with Models at Runtime</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="SupplementaryMaterial.tex"> 
+<link rel="stylesheet" type="text/css" href="SupplementaryMaterial.css"> 
+</head><body 
+>
+   <div class="maketitle">
+
+   <a 
+ id="x1-2f0"></a><span class="footnote-mark"><a 
+ id="fn0x1">   <sup class="textsuperscript"></sup></a></span><span 
+class="ecti-0800">Email addresses: </span><span 
+class="ectt-0800">harveyalferez@um.edu.mx </span><span 
+class="ecrm-0800">(Germ</span><span 
+class="ecrm-0800">án H. Alf</span><span 
+class="ecrm-0800">érez), </span><span 
+class="ectt-0800">pele@dsic.upv.es </span><span 
+class="ecrm-0800">(Vicente</span>
+   <span 
+class="ecrm-0800">Pelechano)</span>
+
+<h2 class="titleHead">Achieving Autonomic Web Service Compositions with
+Models at Runtime</h2>
+Germán H. Alférez<sup class="textsuperscript"><span 
+class="ecrm-0900">a,</span> </sup>, Vicente Pelechano<sup class="textsuperscript"><span 
+class="ecrm-0900">b</span></sup>
+<a 
+ id="x1-3r1"></a>
+<sup class="textsuperscript"><span 
+class="ecti-0900">a</span></sup><span 
+class="ecti-0800">Facultad de Ingenier</span><span 
+class="ecti-0800">ía y Tecnolog</span><span 
+class="ecti-0800">ía, Universidad de Montemorelos, Apartado 16-5,</span>
+<span 
+class="ecti-0800">Montemorelos N.L., Mexico</span>
+<a 
+ id="x1-4r2"></a>
+<sup class="textsuperscript"><span 
+class="ecti-0900">b</span></sup><span 
+class="ecti-0800">Centro de Investigaci</span><span 
+class="ecti-0800">ón en M</span><span 
+class="ecti-0800">étodos de Producci</span><span 
+class="ecti-0800">ón de Software (ProS), Universitat</span>
+<span 
+class="ecti-0800">Polit</span><span 
+class="ecti-0800">ècnica de Val</span><span 
+class="ecti-0800">ència, Cam</span><span 
+class="ecti-0800">í de Vera s/n, E-46022, Spain</span>
+_______________________
+</div>
+     <h3 class="sectionHead"><span class="titlemark">1.  </span> <a 
+ id="x1-10001"></a>Autonomic service compositions through variability constructs at the language
+level</h3>
+     <div class="table">
+
+<!--l. 64--><p class="indent" >   <a 
+ id="x1-1001r1"></a><hr class="float"><div class="float" 
+>
+
+<div class="tabular"> <table id="TBL-1" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1"></colgroup><colgroup id="TBL-1-2g"><col 
+id="TBL-1-2"></colgroup><colgroup id="TBL-1-3g"><col 
+id="TBL-1-3"></colgroup><colgroup id="TBL-1-4g"><col 
+id="TBL-1-4"></colgroup><colgroup id="TBL-1-5g"><col 
+id="TBL-1-5"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-1-1"  
+class="td11"><!--l. 67--><p class="noindent" ><span 
+class="ecbx-0700">Dimension</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-1-2"  
+class="td11"><!--l. 68--><p class="noindent" ><span 
+class="ecbx-0700">SCENE</span>
+ <span 
+class="ecbx-0700">(2006) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XColombo2006"><span 
+class="ecrm-0800">1</span></a><span 
+class="ecrm-0800">]</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-1-3"  
+class="td11"><!--l. 69--><p class="noindent" ><span 
+class="ecbx-0700">AO4BPEL</span>
+ <span 
+class="ecbx-0700">(2007) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XCharfi:2007:AAE:1285732.1285748"><span 
+class="ecrm-0800">2</span></a><span 
+class="ecrm-0800">]</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-1-4"  
+class="td11"><!--l. 70--><p class="noindent" ><span 
+class="ecbx-0700">VxBPEL</span>
+ <span 
+class="ecbx-0700">(2009) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XKoning:2009:VSV:1465741.1466068"><span 
+class="ecrm-0800">3</span></a><span 
+class="ecrm-0800">]</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-1-5"  
+class="td11"><!--l. 71--><p class="noindent" ><span 
+class="ecbx-0700">Self-Supervising</span>
+ <span 
+class="ecbx-0700">WS-BPEL</span>
+ <span 
+class="ecbx-0700">Processes</span>
+ <span 
+class="ecbx-0700">(2011) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XBaresi:2011:SBP:1978260.1978534"><span 
+class="ecrm-0800">4</span></a><span 
+class="ecrm-0800">]</span>
+ <!--l. 74--><p class="noindent" >                </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td colspan="5" style="white-space:nowrap; text-align:center;" id="TBL-1-2-1"  
+class="td11">            <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHAT change is the cause for adaptation</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-3-1"  
+class="td11"><!--l. 78--><p class="noindent" ><span 
+class="ecrm-0700">Source</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-3-2"  
+class="td11"><!--l. 79--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-3-3"  
+class="td11"><!--l. 80--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-3-4"  
+class="td11"><!--l. 81--><p class="noindent" ><span 
+class="ecrm-0700">N/A</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-3-5"  
+class="td11"><!--l. 82--><p class="noindent" ><span 
+class="ecrm-0700">External</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">Internal</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-4-1"  
+class="td11"><!--l. 84--><p class="noindent" ><span 
+class="ecrm-0700">Type</span>                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-4-2"  
+class="td11"><!--l. 85--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-4-3"  
+class="td11"><!--l. 86--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-4-4"  
+class="td11"><!--l. 87--><p class="noindent" ><span 
+class="ecrm-0700">N/A</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-4-5"  
+class="td11"><!--l. 88--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">non-functional</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-5-"><td colspan="5" style="white-space:nowrap; text-align:center;" id="TBL-1-5-1"  
+class="td11">            <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">HOW the service composition faces changes</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-6-1"  
+class="td11"><!--l. 92--><p class="noindent" ><span 
+class="ecrm-0700">Autonomy</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-6-2"  
+class="td11"><!--l. 93--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-6-3"  
+class="td11"><!--l. 94--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-6-4"  
+class="td11"><!--l. 95--><p class="noindent" ><span 
+class="ecrm-0700">Manual</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-6-5"  
+class="td11"><!--l. 96--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-7-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-7-1"  
+class="td11"><!--l. 98--><p class="noindent" ><span 
+class="ecrm-0700">Organization</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-7-2"  
+class="td11"><!--l. 99--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-7-3"  
+class="td11"><!--l. 100--><p class="noindent" ><span 
+class="ecrm-0700">Centralized</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-7-4"  
+class="td11"><!--l. 101--><p class="noindent" ><span 
+class="ecrm-0700">N/A</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-7-5"  
+class="td11"><!--l. 102--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-8-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-8-1"  
+class="td11"><!--l. 104--><p class="noindent" ><span 
+class="ecrm-0700">Scope</span>                 </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-8-2"  
+class="td11"><!--l. 105--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-8-3"  
+class="td11"><!--l. 106--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-8-4"  
+class="td11"><!--l. 107--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-8-5"  
+class="td11"><!--l. 108--><p class="noindent" ><span 
+class="ecrm-0700">Local and</span>
+ <span 
+class="ecrm-0700">global</span>
+ <span 
+class="ecrm-0700">(backward)</span>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-9-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-9-1"  
+class="td11"><!--l. 110--><p class="noindent" ><span 
+class="ecrm-0700">Triggering</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-9-2"  
+class="td11"><!--l. 111--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-9-3"  
+class="td11"><!--l. 112--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-9-4"  
+class="td11"><!--l. 113--><p class="noindent" ><span 
+class="ecrm-0700">N/A</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-9-5"  
+class="td11"><!--l. 114--><p class="noindent" ><span 
+class="ecrm-0700">Time- and</span>
+ <span 
+class="ecrm-0700">event-trigger</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-10-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-10-1"  
+class="td11"><!--l. 116--><p class="noindent" ><span 
+class="ecrm-0700">Safety</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-10-2"  
+class="td11"><!--l. 117--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-10-3"  
+class="td11"><!--l. 118--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-10-4"  
+class="td11"><!--l. 119--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-10-5"  
+class="td11"><!--l. 120--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-11-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-11-1"  
+class="td11"><!--l. 122--><p class="noindent" ><span 
+class="ecrm-0700">Transparency</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-11-2"  
+class="td11"><!--l. 123--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-11-3"  
+class="td11"><!--l. 124--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-11-4"  
+class="td11"><!--l. 125--><p class="noindent" ><span 
+class="ecrm-0700">No</span>
+ <span 
+class="ecrm-0700">transparent</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-11-5"  
+class="td11"><!--l. 126--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-12-"><td colspan="5" style="white-space:nowrap; text-align:center;" id="TBL-1-12-1"  
+class="td11">                <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHEN changes are carried out</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-13-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-13-1"  
+class="td11"><!--l. 130--><p class="noindent" ><span 
+class="ecrm-0700">Frequency</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-13-2"  
+class="td11"><!--l. 131--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-13-3"  
+class="td11"><!--l. 132--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-13-4"  
+class="td11"><!--l. 133--><p class="noindent" ><span 
+class="ecrm-0700">N/A</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-13-5"  
+class="td11"><!--l. 134--><p class="noindent" ><span 
+class="ecrm-0700">Periodically</span>
+ <span 
+class="ecrm-0700">by</span>
+ <span 
+class="ecrm-0700">supervision</span>
+ <span 
+class="ecrm-0700">parameters</span>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-14-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-14-1"  
+class="td11"><!--l. 136--><p class="noindent" ><span 
+class="ecrm-0700">Adaptation time</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-14-2"  
+class="td11"><!--l. 137--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-14-3"  
+class="td11"><!--l. 138--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-14-4"  
+class="td11"><!--l. 139--><p class="noindent" ><span 
+class="ecrm-0700">N/A</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-14-5"  
+class="td11"><!--l. 140--><p class="noindent" ><span 
+class="ecrm-0700">Long</span>          </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-15-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-15-1"  
+class="td11"><!--l. 142--><p class="noindent" ><span 
+class="ecrm-0700">Anticipation</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-15-2"  
+class="td11"><!--l. 143--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-15-3"  
+class="td11"><!--l. 144--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-15-4"  
+class="td11"><!--l. 145--><p class="noindent" ><span 
+class="ecrm-0700">N/A</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-15-5"  
+class="td11"><!--l. 146--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-16-"><td colspan="5" style="white-space:nowrap; text-align:center;" id="TBL-1-16-1"  
+class="td11">                <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHERE changes are carried out</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-17-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-17-1"  
+class="td11"><!--l. 150--><p class="noindent" ><span 
+class="ecrm-0700">Generality</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-17-2"  
+class="td11"><!--l. 151--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-17-3"  
+class="td11"><!--l. 152--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-17-4"  
+class="td11"><!--l. 153--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-17-5"  
+class="td11"><!--l. 154--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-18-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-18-1"  
+class="td11"><!--l. 156--><p class="noindent" ><span 
+class="ecrm-0700">Change level</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-18-2"  
+class="td11"><!--l. 157--><p class="noindent" ><span 
+class="ecrm-0700">Language</span>    </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-18-3"  
+class="td11"><!--l. 158--><p class="noindent" ><span 
+class="ecrm-0700">Language</span>    </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-18-4"  
+class="td11"><!--l. 159--><p class="noindent" ><span 
+class="ecrm-0700">Language</span>    </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-18-5"  
+class="td11"><!--l. 160--><p class="noindent" ><span 
+class="ecrm-0700">Language</span>    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-19-"><td colspan="5" style="white-space:nowrap; text-align:center;" id="TBL-1-19-1"  
+class="td11">                 <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">MATURITY of the approach</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-20-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-20-1"  
+class="td11"><!--l. 164--><p class="noindent" ><span 
+class="ecrm-0700">Applicability</span>
+ <span 
+class="ecrm-0700">scenarios</span>             </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-20-2"  
+class="td11"><!--l. 165--><p class="noindent" ><span 
+class="ecrm-0700">PXE</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-20-3"  
+class="td11"><!--l. 166--><p class="noindent" ><span 
+class="ecrm-0700">BPWS4J</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-20-4"  
+class="td11"><!--l. 167--><p class="noindent" ><span 
+class="ecrm-0700">ActiveBPEL</span></td><td  style="white-space:wrap; text-align:left;" id="TBL-1-20-5"  
+class="td11"><!--l. 168--><p class="noindent" ><span 
+class="ecrm-0700">ActiveBPEL</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-21-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-21-1"  
+class="td11"><!--l. 170--><p class="noindent" ><span 
+class="ecrm-0700">Demonstrability</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-21-2"  
+class="td11"><!--l. 171--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-21-3"  
+class="td11"><!--l. 172--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-21-4"  
+class="td11"><!--l. 173--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-21-5"  
+class="td11"><!--l. 174--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-22-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-22-1"  
+class="td11"><!--l. 176--><p class="noindent" ><span 
+class="ecrm-0700">Life-cycle</span>
+ <span 
+class="ecrm-0700">support</span>              </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-22-2"  
+class="td11"><!--l. 177--><p class="noindent" ><span 
+class="ecrm-0700">Implement.</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-22-3"  
+class="td11"><!--l. 178--><p class="noindent" ><span 
+class="ecrm-0700">Implement.</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-22-4"  
+class="td11"><!--l. 179--><p class="noindent" ><span 
+class="ecrm-0700">Design and</span>
+ <span 
+class="ecrm-0700">runtime</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-22-5"  
+class="td11"><!--l. 180--><p class="noindent" ><span 
+class="ecrm-0700">Design and</span>
+ <span 
+class="ecrm-0700">runtime</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-23-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-23-1"  
+class="td11"><!--l. 182--><p class="noindent" ><span 
+class="ecrm-0700">Evaluation</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-23-2"  
+class="td11"><!--l. 183--><p class="noindent" ><span 
+class="ecrm-0700">Examples</span>    </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-23-3"  
+class="td11"><!--l. 184--><p class="noindent" ><span 
+class="ecrm-0700">Examples</span>    </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-23-4"  
+class="td11"><!--l. 185--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-1-23-5"  
+class="td11"><!--l. 186--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">industrial</span>
+ <span 
+class="ecrm-0700">experiments</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-24-"><td  style="white-space:wrap; text-align:left;" id="TBL-1-24-1"  
+class="td11">             </td></tr></table></div>
+ <div class="caption" 
+><span class="id">Table&#x00A0;1:  </span><span  
+class="content">Comparison  of  the  approaches  that  support  autonomic  service
+compositions through variability constructs at the language level (N/A means
+No Applicable, N/S means Not Specified).</span></div><!--tex4ht:label?: x1-1001r1 -->
+
+   </div><hr class="endfloat" />
+   </div>
+   <h3 class="sectionHead"><span class="titlemark">2.  </span> <a 
+ id="x1-20002"></a>Autonomic service compositions through a broker</h3>
+
+<!--l. 203--><p class="indent" >   <a 
+ id="x1-2001r2"></a><hr class="float"><div class="float" 
+>
+
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"></colgroup><colgroup id="TBL-2-2g"><col 
+id="TBL-2-2"></colgroup><colgroup id="TBL-2-3g"><col 
+id="TBL-2-3"></colgroup><colgroup id="TBL-2-4g"><col 
+id="TBL-2-4"></colgroup><colgroup id="TBL-2-5g"><col 
+id="TBL-2-5"></colgroup><colgroup id="TBL-2-6g"><col 
+id="TBL-2-6"></colgroup><colgroup id="TBL-2-7g"><col 
+id="TBL-2-7"></colgroup><colgroup id="TBL-2-8g"><col 
+id="TBL-2-8"></colgroup><colgroup id="TBL-2-9g"><col 
+id="TBL-2-9"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-1-1"  
+class="td11"><!--l. 206--><p class="noindent" ><span 
+class="ecbx-0700">Dimension</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-1-2"  
+class="td11"><!--l. 207--><p class="noindent" ><span 
+class="ecbx-0700">AgFlow</span>
+ <span 
+class="ecbx-0700">(2004) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XZeng:2004:QMW:987527.987638"><span 
+class="ecrm-0800">5</span></a><span 
+class="ecrm-0800">]</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-1-3"  
+class="td11"><!--l. 208--><p class="noindent" ><span 
+class="ecbx-0700">WSQoSX</span>
+ <span 
+class="ecbx-0700">(2006) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XBerbner:2006:HQW:1172963.1173158"><span 
+class="ecrm-0800">6</span></a><span 
+class="ecrm-0800">]</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-1-4"  
+class="td11"><!--l. 209--><p class="noindent" ><span 
+class="ecbx-0700">Robust-BPEL2</span>
+ <span 
+class="ecbx-0700">(2007) </span><span 
+class="ecrm-0800">[</span><a 
+href="#X4144649"><span 
+class="ecrm-0800">7</span></a><span 
+class="ecrm-0800">]</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-1-5"  
+class="td11"><!--l. 210--><p class="noindent" ><span 
+class="ecbx-0700">PAWS</span>
+ <span 
+class="ecbx-0700">(2007)</span>
+ <span 
+class="ecrm-0800">[</span><a 
+href="#XArdagna:2007:PFE:1308450.1309102"><span 
+class="ecrm-0800">8</span></a><span 
+class="ecrm-0800">,</span><span 
+class="ecrm-0800">&#x00A0;</span><a 
+href="#X4181707"><span 
+class="ecrm-0800">9</span></a><span 
+class="ecrm-0800">]</span>         </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-1-6"  
+class="td11"><!--l. 211--><p class="noindent" ><span 
+class="ecbx-0700">VieDAME</span>
+ <span 
+class="ecbx-0700">(2008)</span><span 
+class="ecrm-0800">[</span><a 
+href="#XMoser:2008:NMS:1367497.1367607"><span 
+class="ecrm-0800">10</span></a><span 
+class="ecrm-0800">]</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-1-7"  
+class="td11"><!--l. 212--><p class="noindent" ><span 
+class="ecbx-0700">Transpa.</span>
+ <span 
+class="ecbx-0700">Runtime</span>
+ <span 
+class="ecbx-0700">Adap.</span>
+ <span 
+class="ecbx-0700">(2008) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XMosincat:2008:TRA:1484716.1484736"><span 
+class="ecrm-0800">11</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-1-8"  
+class="td11"><!--l. 213--><p class="noindent" ><span 
+class="ecbx-0700">QoS-Aware</span>
+ <span 
+class="ecbx-0700">Binding</span>
+ <span 
+class="ecbx-0700">(2008) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XCanfora20081754"><span 
+class="ecrm-0800">12</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-1-9"  
+class="td11"><!--l. 214--><p class="noindent" ><span 
+class="ecbx-0700">PBPEL&#8217;n&#8217;Aspects</span>
+ <span 
+class="ecbx-0700">(2009)</span>
+ <span 
+class="ecrm-0800">[</span><a 
+href="#X5175827"><span 
+class="ecrm-0800">13</span></a><span 
+class="ecrm-0800">,</span><span 
+class="ecrm-0800">&#x00A0;</span><a 
+href="#XSonntag2011"><span 
+class="ecrm-0800">14</span></a><span 
+class="ecrm-0800">]</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-2-2-1"  
+class="td11">                                  <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHAT change is the cause for adaptation</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-1"  
+class="td11"><!--l. 219--><p class="noindent" ><span 
+class="ecrm-0700">Source</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-2"  
+class="td11"><!--l. 220--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-3"  
+class="td11"><!--l. 221--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-4"  
+class="td11"><!--l. 222--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-5"  
+class="td11"><!--l. 223--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-6"  
+class="td11"><!--l. 224--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-7"  
+class="td11"><!--l. 225--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-8"  
+class="td11"><!--l. 226--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-3-9"  
+class="td11"><!--l. 227--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-1"  
+class="td11"><!--l. 229--><p class="noindent" ><span 
+class="ecrm-0700">Type</span>                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-2"  
+class="td11"><!--l. 230--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-3"  
+class="td11"><!--l. 231--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-4"  
+class="td11"><!--l. 232--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-5"  
+class="td11"><!--l. 233--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-6"  
+class="td11"><!--l. 234--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-7"  
+class="td11"><!--l. 235--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-8"  
+class="td11"><!--l. 236--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-4-9"  
+class="td11"><!--l. 237--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-2-5-1"  
+class="td11">                                 <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">HOW the service composition faces changes</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-6-1"  
+class="td11"><!--l. 241--><p class="noindent" ><span 
+class="ecrm-0700">Autonomy</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-6-2"  
+class="td11"><!--l. 242--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-6-3"  
+class="td11"><!--l. 243--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-6-4"  
+class="td11"><!--l. 244--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-6-5"  
+class="td11"><!--l. 245--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-6-6"  
+class="td11"><!--l. 246--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-6-7"  
+class="td11"><!--l. 247--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-6-8"  
+class="td11"><!--l. 248--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-6-9"  
+class="td11"><!--l. 249--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-7-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-7-1"  
+class="td11"><!--l. 251--><p class="noindent" ><span 
+class="ecrm-0700">Organization</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-7-2"  
+class="td11"><!--l. 252--><p class="noindent" ><span 
+class="ecrm-0700">Centralized</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-7-3"  
+class="td11"><!--l. 253--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-7-4"  
+class="td11"><!--l. 254--><p class="noindent" ><span 
+class="ecrm-0700">Centralized</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-7-5"  
+class="td11"><!--l. 255--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-7-6"  
+class="td11"><!--l. 256--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-7-7"  
+class="td11"><!--l. 257--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-7-8"  
+class="td11"><!--l. 258--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-7-9"  
+class="td11"><!--l. 259--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-8-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-8-1"  
+class="td11"><!--l. 261--><p class="noindent" ><span 
+class="ecrm-0700">Scope</span>                 </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-8-2"  
+class="td11"><!--l. 262--><p class="noindent" ><span 
+class="ecrm-0700">Local and</span>
+ <span 
+class="ecrm-0700">global</span>         </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-8-3"  
+class="td11"><!--l. 263--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-8-4"  
+class="td11"><!--l. 264--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-8-5"  
+class="td11"><!--l. 265--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-8-6"  
+class="td11"><!--l. 266--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-8-7"  
+class="td11"><!--l. 267--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-8-8"  
+class="td11"><!--l. 268--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-8-9"  
+class="td11"><!--l. 269--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-9-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-9-1"  
+class="td11"><!--l. 271--><p class="noindent" ><span 
+class="ecrm-0700">Triggering</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-9-2"  
+class="td11"><!--l. 272--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-9-3"  
+class="td11"><!--l. 273--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-9-4"  
+class="td11"><!--l. 274--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-9-5"  
+class="td11"><!--l. 275--><p class="noindent" ><span 
+class="ecrm-0700">Event- and</span>
+ <span 
+class="ecrm-0700">time-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-9-6"  
+class="td11"><!--l. 276--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-9-7"  
+class="td11"><!--l. 277--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-9-8"  
+class="td11"><!--l. 278--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-9-9"  
+class="td11"><!--l. 279--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-10-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-10-1"  
+class="td11"><!--l. 281--><p class="noindent" ><span 
+class="ecrm-0700">Safety</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-10-2"  
+class="td11"><!--l. 282--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-10-3"  
+class="td11"><!--l. 283--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-10-4"  
+class="td11"><!--l. 284--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-10-5"  
+class="td11"><!--l. 285--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-10-6"  
+class="td11"><!--l. 286--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-10-7"  
+class="td11"><!--l. 287--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-10-8"  
+class="td11"><!--l. 288--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-10-9"  
+class="td11"><!--l. 289--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-11-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-11-1"  
+class="td11"><!--l. 291--><p class="noindent" ><span 
+class="ecrm-0700">Transparency</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-11-2"  
+class="td11"><!--l. 292--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-11-3"  
+class="td11"><!--l. 293--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-11-4"  
+class="td11"><!--l. 294--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-11-5"  
+class="td11"><!--l. 295--><p class="noindent" ><span 
+class="ecrm-0700">No</span>
+ <span 
+class="ecrm-0700">transparent</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-11-6"  
+class="td11"><!--l. 296--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-11-7"  
+class="td11"><!--l. 297--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-11-8"  
+class="td11"><!--l. 298--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-11-9"  
+class="td11"><!--l. 299--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-12-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-2-12-1"  
+class="td11">                                      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHEN changes are carried out</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-13-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-13-1"  
+class="td11"><!--l. 303--><p class="noindent" ><span 
+class="ecrm-0700">Frequency</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-13-2"  
+class="td11"><!--l. 304--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-13-3"  
+class="td11"><!--l. 305--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-13-4"  
+class="td11"><!--l. 306--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-13-5"  
+class="td11"><!--l. 307--><p class="noindent" ><span 
+class="ecrm-0700">Periodically</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-13-6"  
+class="td11"><!--l. 308--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-13-7"  
+class="td11"><!--l. 309--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-13-8"  
+class="td11"><!--l. 310--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-13-9"  
+class="td11"><!--l. 311--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-14-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-14-1"  
+class="td11"><!--l. 313--><p class="noindent" ><span 
+class="ecrm-0700">Adaptation time</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-14-2"  
+class="td11"><!--l. 314--><p class="noindent" ><span 
+class="ecrm-0700">Long</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-14-3"  
+class="td11"><!--l. 315--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-14-4"  
+class="td11"><!--l. 316--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-14-5"  
+class="td11"><!--l. 317--><p class="noindent" ><span 
+class="ecrm-0700">Long with</span>
+ <span 
+class="ecrm-0700">several</span>
+ <span 
+class="ecrm-0700">proxies</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-14-6"  
+class="td11"><!--l. 318--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-14-7"  
+class="td11"><!--l. 319--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-14-8"  
+class="td11"><!--l. 320--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-14-9"  
+class="td11"><!--l. 321--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-15-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-15-1"  
+class="td11"><!--l. 323--><p class="noindent" ><span 
+class="ecrm-0700">Anticipation</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-15-2"  
+class="td11"><!--l. 324--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-15-3"  
+class="td11"><!--l. 325--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-15-4"  
+class="td11"><!--l. 326--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-15-5"  
+class="td11"><!--l. 327--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-15-6"  
+class="td11"><!--l. 328--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-15-7"  
+class="td11"><!--l. 329--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-15-8"  
+class="td11"><!--l. 330--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-15-9"  
+class="td11"><!--l. 331--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-16-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-2-16-1"  
+class="td11">                                      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHERE changes are carried out</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-17-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-17-1"  
+class="td11"><!--l. 335--><p class="noindent" ><span 
+class="ecrm-0700">Generality</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-17-2"  
+class="td11"><!--l. 336--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-17-3"  
+class="td11"><!--l. 337--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-17-4"  
+class="td11"><!--l. 338--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-17-5"  
+class="td11"><!--l. 339--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-17-6"  
+class="td11"><!--l. 340--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-17-7"  
+class="td11"><!--l. 341--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-17-8"  
+class="td11"><!--l. 342--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-17-9"  
+class="td11"><!--l. 343--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-18-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-18-1"  
+class="td11"><!--l. 345--><p class="noindent" ><span 
+class="ecrm-0700">Change level</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-18-2"  
+class="td11"><!--l. 346--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-18-3"  
+class="td11"><!--l. 347--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-18-4"  
+class="td11"><!--l. 348--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-18-5"  
+class="td11"><!--l. 349--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-18-6"  
+class="td11"><!--l. 350--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-18-7"  
+class="td11"><!--l. 351--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-18-8"  
+class="td11"><!--l. 352--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-18-9"  
+class="td11"><!--l. 353--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-19-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-2-19-1"  
+class="td11">                                       <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">MATURITY of the approach</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-20-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-20-1"  
+class="td11"><!--l. 357--><p class="noindent" ><span 
+class="ecrm-0700">Applicability</span>
+ <span 
+class="ecrm-0700">scenarios</span>             </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-20-2"  
+class="td11"><!--l. 358--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-20-3"  
+class="td11"><!--l. 359--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-20-4"  
+class="td11"><!--l. 360--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-20-5"  
+class="td11"><!--l. 361--><p class="noindent" ><span 
+class="ecrm-0700">ActiveBPEL</span></td><td  style="white-space:wrap; text-align:left;" id="TBL-2-20-6"  
+class="td11"><!--l. 362--><p class="noindent" ><span 
+class="ecrm-0700">ActiveBPEL</span></td><td  style="white-space:wrap; text-align:left;" id="TBL-2-20-7"  
+class="td11"><!--l. 363--><p class="noindent" ><span 
+class="ecrm-0700">ActiveBPEL</span></td><td  style="white-space:wrap; text-align:left;" id="TBL-2-20-8"  
+class="td11"><!--l. 364--><p class="noindent" ><span 
+class="ecrm-0700">ActiveBPEL</span></td><td  style="white-space:wrap; text-align:left;" id="TBL-2-20-9"  
+class="td11"><!--l. 365--><p class="noindent" ><span 
+class="ecrm-0700">ActiveBPEL</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-21-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-21-1"  
+class="td11"><!--l. 367--><p class="noindent" ><span 
+class="ecrm-0700">Demonstrability</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-21-2"  
+class="td11"><!--l. 368--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-21-3"  
+class="td11"><!--l. 369--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-21-4"  
+class="td11"><!--l. 370--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-21-5"  
+class="td11"><!--l. 371--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-21-6"  
+class="td11"><!--l. 372--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-21-7"  
+class="td11"><!--l. 373--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-21-8"  
+class="td11"><!--l. 374--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-21-9"  
+class="td11"><!--l. 375--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-22-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-22-1"  
+class="td11"><!--l. 377--><p class="noindent" ><span 
+class="ecrm-0700">Life-cycle</span>
+ <span 
+class="ecrm-0700">support</span>              </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-22-2"  
+class="td11"><!--l. 378--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-22-3"  
+class="td11"><!--l. 379--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-22-4"  
+class="td11"><!--l. 380--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-22-5"  
+class="td11"><!--l. 381--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-22-6"  
+class="td11"><!--l. 382--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-22-7"  
+class="td11"><!--l. 383--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-22-8"  
+class="td11"><!--l. 384--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-22-9"  
+class="td11"><!--l. 385--><p class="noindent" ><span 
+class="ecrm-0700">Implemen-</span><br />
+ <span 
+class="ecrm-0700">tation and</span>
+ <span 
+class="ecrm-0700">runtime</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-23-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-23-1"  
+class="td11"><!--l. 388--><p class="noindent" ><span 
+class="ecrm-0700">Evaluation</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-23-2"  
+class="td11"><!--l. 389--><p class="noindent" ><span 
+class="ecrm-0700">Examples</span>    </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-23-3"  
+class="td11"><!--l. 390--><p class="noindent" ><span 
+class="ecrm-0700">Simulations</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">examples</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-23-4"  
+class="td11"><!--l. 391--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-23-5"  
+class="td11"><!--l. 392--><p class="noindent" ><span 
+class="ecrm-0700">Simulations</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-23-6"  
+class="td11"><!--l. 393--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-23-7"  
+class="td11"><!--l. 394--><p class="noindent" ><span 
+class="ecrm-0700">Examples</span>    </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-23-8"  
+class="td11"><!--l. 395--><p class="noindent" ><span 
+class="ecrm-0700">Examples</span>    </td><td  style="white-space:wrap; text-align:left;" id="TBL-2-23-9"  
+class="td11"><!--l. 396--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-24-"><td  style="white-space:wrap; text-align:left;" id="TBL-2-24-1"  
+class="td11">             </td></tr></table>
+</div>
+ <div class="caption" 
+><span class="id">Table&#x00A0;2:  </span><span  
+class="content">Comparison  of  the  approaches  that  support  autonomic  service
+compositions through a broker (N/A means No Applicable, N/S means Not
+Specified). Table continued in Table 3.</span></div><!--tex4ht:label?: x1-2001r2 -->
+
+   </div><hr class="endfloat" />
+
+<!--l. 411--><p class="indent" >   <hr class="float"><div class="float" 
+>
+
+<span 
+class="ecrm-0800">Table continued from Table 2.</span>
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1"></colgroup><colgroup id="TBL-3-2g"><col 
+id="TBL-3-2"></colgroup><colgroup id="TBL-3-3g"><col 
+id="TBL-3-3"></colgroup><colgroup id="TBL-3-4g"><col 
+id="TBL-3-4"></colgroup><colgroup id="TBL-3-5g"><col 
+id="TBL-3-5"></colgroup><colgroup id="TBL-3-6g"><col 
+id="TBL-3-6"></colgroup><colgroup id="TBL-3-7g"><col 
+id="TBL-3-7"></colgroup><colgroup id="TBL-3-8g"><col 
+id="TBL-3-8"></colgroup><colgroup id="TBL-3-9g"><col 
+id="TBL-3-9"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-1"  
+class="td11"><!--l. 419--><p class="noindent" ><span 
+class="ecbx-0700">Dimension</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-2"  
+class="td11"><!--l. 420--><p class="noindent" ><span 
+class="ecbx-0700">Percentile-Based</span>
+ <span 
+class="ecbx-0700">SLAs</span>
+ <span 
+class="ecbx-0700">(2010) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XCardellini2010"><span 
+class="ecrm-0800">15</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-3"  
+class="td11"><!--l. 421--><p class="noindent" ><span 
+class="ecbx-0700">Chemistry-Inspired</span>
+ <span 
+class="ecbx-0700">Middleware</span>
+ <span 
+class="ecbx-0700">(2013) </span><span 
+class="ecrm-0800">[</span><a 
+href="#X6546122"><span 
+class="ecrm-0800">16</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-4"  
+class="td11"><!--l. 422--><p class="noindent" ><span 
+class="ecbx-0700">QoS-Gasp</span>
+ <span 
+class="ecbx-0700">(2014) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XParejo20144211"><span 
+class="ecrm-0800">17</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-5"  
+class="td11"><!--l. 423--><p class="noindent" ><span 
+class="ecbx-0700">MoDAR</span>
+ <span 
+class="ecbx-0700">(2015)</span>
+ <span 
+class="ecrm-0700">[</span><a 
+href="#XYu2015533"><span 
+class="ecrm-0700">18</span></a><span 
+class="ecrm-0700">]</span>            </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-6"  
+class="td11"><!--l. 424--><p class="noindent" ><span 
+class="ecbx-0700">LIOM</span>
+ <span 
+class="ecbx-0700">(2015) </span><span 
+class="ecrm-0800">[</span><a 
+href="#X7231019"><span 
+class="ecrm-0800">19</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-7"  
+class="td11"><!--l. 425--><p class="noindent" ><span 
+class="ecbx-0700">Dynamic</span>
+ <span 
+class="ecbx-0700">Evolution</span>
+ <span 
+class="ecbx-0700">(2015) </span><span 
+class="ecrm-0800">[</span><a 
+href="#X7185446"><span 
+class="ecrm-0800">20</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-8"  
+class="td11"><!--l. 426--><p class="noindent" ><span 
+class="ecbx-0700">Multi-Agent</span>
+ <span 
+class="ecbx-0700">Reinforcement</span>
+ <span 
+class="ecbx-0700">Learning</span>
+ <span 
+class="ecbx-0700">(2016) </span><span 
+class="ecrm-0700">[</span><a 
+href="#XWang201696"><span 
+class="ecrm-0700">21</span></a><span 
+class="ecrm-0700">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-9"  
+class="td11"><!--l. 428--><p class="noindent" ><span 
+class="ecbx-0700">Trustworthy</span>
+ <span 
+class="ecbx-0700">Stigmergic-based</span>
+ <span 
+class="ecbx-0700">Self-Org.</span>
+ <span 
+class="ecbx-0700">(2016) </span><span 
+class="ecrm-0800">[</span><a 
+href="#X6705665"><span 
+class="ecrm-0800">22</span></a><span 
+class="ecrm-0800">]</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-3-2-1"  
+class="td11">                                  <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHAT change is the cause for adaptation</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-1"  
+class="td11"><!--l. 434--><p class="noindent" ><span 
+class="ecrm-0700">Source</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-2"  
+class="td11"><!--l. 435--><p class="noindent" ><span 
+class="ecrm-0700">External</span>
+ <span 
+class="ecrm-0700">and internal</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-3"  
+class="td11"><!--l. 436--><p class="noindent" ><span 
+class="ecrm-0700">Internal</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-4"  
+class="td11"><!--l. 437--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-5"  
+class="td11"><!--l. 438--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-6"  
+class="td11"><!--l. 439--><p class="noindent" ><span 
+class="ecrm-0700">Internal</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-7"  
+class="td11"><!--l. 440--><p class="noindent" ><span 
+class="ecrm-0700">External</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">Internal</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-8"  
+class="td11"><!--l. 441--><p class="noindent" ><span 
+class="ecrm-0700">External</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">Internal</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-9"  
+class="td11"><!--l. 442--><p class="noindent" ><span 
+class="ecrm-0700">External</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">Internal</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-1"  
+class="td11"><!--l. 444--><p class="noindent" ><span 
+class="ecrm-0700">Type</span>                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-2"  
+class="td11"><!--l. 445--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-3"  
+class="td11"><!--l. 446--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-4"  
+class="td11"><!--l. 447--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-5"  
+class="td11"><!--l. 448--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-6"  
+class="td11"><!--l. 449--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-7"  
+class="td11"><!--l. 450--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-8"  
+class="td11"><!--l. 451--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-9"  
+class="td11"><!--l. 452--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">non-functional</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-3-5-1"  
+class="td11">                                 <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">HOW the service composition faces changes</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-1"  
+class="td11"><!--l. 456--><p class="noindent" ><span 
+class="ecrm-0700">Autonomy</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-2"  
+class="td11"><!--l. 457--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-3"  
+class="td11"><!--l. 458--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-4"  
+class="td11"><!--l. 459--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-5"  
+class="td11"><!--l. 460--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-6"  
+class="td11"><!--l. 461--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-7"  
+class="td11"><!--l. 462--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-8"  
+class="td11"><!--l. 463--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-9"  
+class="td11"><!--l. 464--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-1"  
+class="td11"><!--l. 466--><p class="noindent" ><span 
+class="ecrm-0700">Organization</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-2"  
+class="td11"><!--l. 467--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-3"  
+class="td11"><!--l. 468--><p class="noindent" ><span 
+class="ecrm-0700">Centralized</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-4"  
+class="td11"><!--l. 469--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-5"  
+class="td11"><!--l. 470--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-6"  
+class="td11"><!--l. 471--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-7"  
+class="td11"><!--l. 472--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-8"  
+class="td11"><!--l. 473--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-9"  
+class="td11"><!--l. 474--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-1"  
+class="td11"><!--l. 476--><p class="noindent" ><span 
+class="ecrm-0700">Scope</span>                 </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-2"  
+class="td11"><!--l. 477--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-3"  
+class="td11"><!--l. 478--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-4"  
+class="td11"><!--l. 479--><p class="noindent" ><span 
+class="ecrm-0700">Global</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-5"  
+class="td11"><!--l. 480--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-6"  
+class="td11"><!--l. 481--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-7"  
+class="td11"><!--l. 482--><p class="noindent" ><span 
+class="ecrm-0700">Local and</span>
+ <span 
+class="ecrm-0700">Global</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-8"  
+class="td11"><!--l. 483--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-9"  
+class="td11"><!--l. 484--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-9-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-1"  
+class="td11"><!--l. 486--><p class="noindent" ><span 
+class="ecrm-0700">Triggering</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-2"  
+class="td11"><!--l. 487--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-3"  
+class="td11"><!--l. 488--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-4"  
+class="td11"><!--l. 489--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-5"  
+class="td11"><!--l. 490--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-6"  
+class="td11"><!--l. 491--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-7"  
+class="td11"><!--l. 492--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-8"  
+class="td11"><!--l. 493--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-9"  
+class="td11"><!--l. 494--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-10-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-1"  
+class="td11"><!--l. 496--><p class="noindent" ><span 
+class="ecrm-0700">Safety</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-2"  
+class="td11"><!--l. 497--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-3"  
+class="td11"><!--l. 498--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-4"  
+class="td11"><!--l. 499--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-5"  
+class="td11"><!--l. 500--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-6"  
+class="td11"><!--l. 501--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-7"  
+class="td11"><!--l. 502--><p class="noindent" ><span 
+class="ecrm-0700">Verified</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-8"  
+class="td11"><!--l. 503--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-10-9"  
+class="td11"><!--l. 504--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-11-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-11-1"  
+class="td11"><!--l. 506--><p class="noindent" ><span 
+class="ecrm-0700">Transparency</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-11-2"  
+class="td11"><!--l. 507--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-11-3"  
+class="td11"><!--l. 508--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-11-4"  
+class="td11"><!--l. 509--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-11-5"  
+class="td11"><!--l. 510--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-11-6"  
+class="td11"><!--l. 511--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-11-7"  
+class="td11"><!--l. 512--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-11-8"  
+class="td11"><!--l. 513--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-11-9"  
+class="td11"><!--l. 514--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-12-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-3-12-1"  
+class="td11">                                      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHEN changes are carried out</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-13-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-13-1"  
+class="td11"><!--l. 518--><p class="noindent" ><span 
+class="ecrm-0700">Frequency</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-13-2"  
+class="td11"><!--l. 519--><p class="noindent" ><span 
+class="ecrm-0700">Periodically</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-13-3"  
+class="td11"><!--l. 520--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-13-4"  
+class="td11"><!--l. 521--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-13-5"  
+class="td11"><!--l. 522--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-13-6"  
+class="td11"><!--l. 523--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-13-7"  
+class="td11"><!--l. 524--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-13-8"  
+class="td11"><!--l. 525--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-13-9"  
+class="td11"><!--l. 526--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-14-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-14-1"  
+class="td11"><!--l. 528--><p class="noindent" ><span 
+class="ecrm-0700">Adaptation time</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-14-2"  
+class="td11"><!--l. 529--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-14-3"  
+class="td11"><!--l. 530--><p class="noindent" ><span 
+class="ecrm-0700">Long</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-14-4"  
+class="td11"><!--l. 531--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-14-5"  
+class="td11"><!--l. 532--><p class="noindent" ><span 
+class="ecrm-0700">Medium</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-14-6"  
+class="td11"><!--l. 533--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-14-7"  
+class="td11"><!--l. 534--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-14-8"  
+class="td11"><!--l. 535--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-14-9"  
+class="td11"><!--l. 536--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-15-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-15-1"  
+class="td11"><!--l. 538--><p class="noindent" ><span 
+class="ecrm-0700">Anticipation</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-15-2"  
+class="td11"><!--l. 539--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-15-3"  
+class="td11"><!--l. 540--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-15-4"  
+class="td11"><!--l. 541--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-15-5"  
+class="td11"><!--l. 542--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-15-6"  
+class="td11"><!--l. 543--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-15-7"  
+class="td11"><!--l. 544--><p class="noindent" ><span 
+class="ecrm-0700">Unforeseen</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-15-8"  
+class="td11"><!--l. 545--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-15-9"  
+class="td11"><!--l. 546--><p class="noindent" ><span 
+class="ecrm-0700">Unforeseen</span>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-16-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-3-16-1"  
+class="td11">                                      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHERE changes are carried out</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-17-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-17-1"  
+class="td11"><!--l. 550--><p class="noindent" ><span 
+class="ecrm-0700">Generality</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-17-2"  
+class="td11"><!--l. 551--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-17-3"  
+class="td11"><!--l. 552--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-17-4"  
+class="td11"><!--l. 553--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-17-5"  
+class="td11"><!--l. 554--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-17-6"  
+class="td11"><!--l. 555--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-17-7"  
+class="td11"><!--l. 556--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services and</span>
+ <span 
+class="ecrm-0700">API</span>
+ <span 
+class="ecrm-0700">Recommenders</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-17-8"  
+class="td11"><!--l. 557--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-17-9"  
+class="td11"><!--l. 558--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-18-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-18-1"  
+class="td11"><!--l. 560--><p class="noindent" ><span 
+class="ecrm-0700">Change level</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-18-2"  
+class="td11"><!--l. 561--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-18-3"  
+class="td11"><!--l. 562--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-18-4"  
+class="td11"><!--l. 563--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-18-5"  
+class="td11"><!--l. 564--><p class="noindent" ><span 
+class="ecrm-0700">Aspect</span>
+ <span 
+class="ecrm-0700">Injection</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-18-6"  
+class="td11"><!--l. 565--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-18-7"  
+class="td11"><!--l. 566--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-18-8"  
+class="td11"><!--l. 567--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-18-9"  
+class="td11"><!--l. 568--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-19-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-3-19-1"  
+class="td11">                                       <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">MATURITY of the approach</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-20-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-20-1"  
+class="td11"><!--l. 572--><p class="noindent" ><span 
+class="ecrm-0700">Applicability</span>
+ <span 
+class="ecrm-0700">scenarios</span>             </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-20-2"  
+class="td11"><!--l. 573--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-20-3"  
+class="td11"><!--l. 574--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-20-4"  
+class="td11"><!--l. 575--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-20-5"  
+class="td11"><!--l. 576--><p class="noindent" ><span 
+class="ecrm-0700">RiftSaw</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-20-6"  
+class="td11"><!--l. 577--><p class="noindent" ><span 
+class="ecrm-0700">WSO2</span>
+ <span 
+class="ecrm-0700">Enterprise</span>
+ <span 
+class="ecrm-0700">Service Bus</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-20-7"  
+class="td11"><!--l. 578--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-20-8"  
+class="td11"><!--l. 579--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-20-9"  
+class="td11"><!--l. 580--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-21-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-21-1"  
+class="td11"><!--l. 582--><p class="noindent" ><span 
+class="ecrm-0700">Demonstrability</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-21-2"  
+class="td11"><!--l. 583--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-21-3"  
+class="td11"><!--l. 584--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-21-4"  
+class="td11"><!--l. 585--><p class="noindent" ><span 
+class="ecrm-0700">Source code</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-21-5"  
+class="td11"><!--l. 586--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-21-6"  
+class="td11"><!--l. 587--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-21-7"  
+class="td11"><!--l. 588--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-21-8"  
+class="td11"><!--l. 589--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-21-9"  
+class="td11"><!--l. 590--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-22-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-22-1"  
+class="td11"><!--l. 592--><p class="noindent" ><span 
+class="ecrm-0700">Life-cycle</span>
+ <span 
+class="ecrm-0700">support</span>              </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-22-2"  
+class="td11"><!--l. 593--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-22-3"  
+class="td11"><!--l. 594--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-22-4"  
+class="td11"><!--l. 595--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-22-5"  
+class="td11"><!--l. 596--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-22-6"  
+class="td11"><!--l. 597--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-22-7"  
+class="td11"><!--l. 598--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-22-8"  
+class="td11"><!--l. 599--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-22-9"  
+class="td11"><!--l. 600--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-23-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-23-1"  
+class="td11"><!--l. 602--><p class="noindent" ><span 
+class="ecrm-0700">Evaluation</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-23-2"  
+class="td11"><!--l. 603--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-23-3"  
+class="td11"><!--l. 604--><p class="noindent" ><span 
+class="ecrm-0700">Experiments</span></td><td  style="white-space:wrap; text-align:left;" id="TBL-3-23-4"  
+class="td11"><!--l. 605--><p class="noindent" ><span 
+class="ecrm-0700">Experiments</span></td><td  style="white-space:wrap; text-align:left;" id="TBL-3-23-5"  
+class="td11"><!--l. 606--><p class="noindent" ><span 
+class="ecrm-0700">Experiments</span>
+ <span 
+class="ecrm-0700">and case</span>
+ <span 
+class="ecrm-0700">study</span>         </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-23-6"  
+class="td11"><!--l. 607--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-23-7"  
+class="td11"><!--l. 608--><p class="noindent" ><span 
+class="ecrm-0700">Experiments</span></td><td  style="white-space:wrap; text-align:left;" id="TBL-3-23-8"  
+class="td11"><!--l. 609--><p class="noindent" ><span 
+class="ecrm-0700">Experiments</span></td><td  style="white-space:wrap; text-align:left;" id="TBL-3-23-9"  
+class="td11"><!--l. 610--><p class="noindent" ><span 
+class="ecrm-0700">Experiments</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-24-"><td  style="white-space:wrap; text-align:left;" id="TBL-3-24-1"  
+class="td11">             </td></tr></table>
+</div>
+
+   </div><hr class="endfloat" />
+   <h3 class="sectionHead"><span class="titlemark">3.  </span> <a 
+ id="x1-30003"></a>Autonomic service compositions through models at runtime</h3>
+
+<!--l. 623--><p class="indent" >   <a 
+ id="x1-3001r3"></a><hr class="float"><div class="float" 
+>
+
+<div class="tabular"> <table id="TBL-4" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-4-1g"><col 
+id="TBL-4-1"></colgroup><colgroup id="TBL-4-2g"><col 
+id="TBL-4-2"></colgroup><colgroup id="TBL-4-3g"><col 
+id="TBL-4-3"></colgroup><colgroup id="TBL-4-4g"><col 
+id="TBL-4-4"></colgroup><colgroup id="TBL-4-5g"><col 
+id="TBL-4-5"></colgroup><colgroup id="TBL-4-6g"><col 
+id="TBL-4-6"></colgroup><colgroup id="TBL-4-7g"><col 
+id="TBL-4-7"></colgroup><colgroup id="TBL-4-8g"><col 
+id="TBL-4-8"></colgroup><colgroup id="TBL-4-9g"><col 
+id="TBL-4-9"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-1-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-1"  
+class="td11"><!--l. 626--><p class="noindent" ><span 
+class="ecbx-0700">Dimension</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-2"  
+class="td11"><!--l. 627--><p class="noindent" ><span 
+class="ecbx-0700">DySOA</span>
+ <span 
+class="ecbx-0700">(2005)</span>
+ <span 
+class="ecrm-0800">[</span><a 
+href="#XBosloper:2005:CSS:1114281.1114449"><span 
+class="ecrm-0800">23</span></a><span 
+class="ecrm-0800">,</span><span 
+class="ecrm-0800">&#x00A0;</span><a 
+href="#XSiljee:2005:DMS:2113865.2113891"><span 
+class="ecrm-0800">24</span></a><span 
+class="ecrm-0800">]</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-3"  
+class="td11"><!--l. 628--><p class="noindent" ><span 
+class="ecbx-0700">SASSY</span>
+ <span 
+class="ecbx-0700">(2011) </span><span 
+class="ecrm-0800">[</span><a 
+href="#X10.1109/MS.2011.22"><span 
+class="ecrm-0800">25</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-4"  
+class="td11"><!--l. 629--><p class="noindent" ><span 
+class="ecbx-0700">MAESoS</span>
+ <span 
+class="ecbx-0700">(2011) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XFranch:2011:GAS:2056316.2057053"><span 
+class="ecrm-0800">26</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-5"  
+class="td11"><!--l. 630--><p class="noindent" ><span 
+class="ecbx-0700">QoSMOS</span>
+ <span 
+class="ecbx-0700">(2011) </span><span 
+class="ecrm-0800">[</span><a 
+href="#X10.1109/TSE.2010.92"><span 
+class="ecrm-0800">27</span></a><span 
+class="ecrm-0800">]</span>
+ <!--l. 632--><p class="noindent" >                </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-6"  
+class="td11"><!--l. 633--><p class="noindent" ><span 
+class="ecbx-0700">MUSIC</span>
+ <span 
+class="ecbx-0700">(2012) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XHallsteinsen20122840"><span 
+class="ecrm-0800">28</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-7"  
+class="td11"><!--l. 634--><p class="noindent" ><span 
+class="ecbx-0700">MOSES</span>
+ <span 
+class="ecbx-0700">(2012)</span>
+ <span 
+class="ecrm-0800">[</span><a 
+href="#X5963694"><span 
+class="ecrm-0800">29</span></a><span 
+class="ecrm-0800">]</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-8"  
+class="td11"><!--l. 635--><p class="noindent" ><span 
+class="ecbx-0700">Runtime</span>
+ <span 
+class="ecbx-0700">Evolution</span>
+ <span 
+class="ecbx-0700">(2013) </span><span 
+class="ecrm-0800">[</span><a 
+href="#X6649702"><span 
+class="ecrm-0800">30</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-1-9"  
+class="td11"><!--l. 636--><p class="noindent" ><span 
+class="ecbx-0700">Req.</span>
+ <span 
+class="ecbx-0700">Driven</span>
+ <span 
+class="ecbx-0700">Self-Op.</span>
+ <span 
+class="ecbx-0700">(2015)</span>
+ <span 
+class="ecrm-0800">[</span><a 
+href="#X6705644"><span 
+class="ecrm-0800">31</span></a><span 
+class="ecrm-0800">]</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-2-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-4-2-1"  
+class="td11">                                  <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHAT change is the cause for adaptation</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-1"  
+class="td11"><!--l. 642--><p class="noindent" ><span 
+class="ecrm-0700">Source</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-2"  
+class="td11"><!--l. 643--><p class="noindent" ><span 
+class="ecrm-0700">External</span>
+ <span 
+class="ecrm-0700">and internal</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-3"  
+class="td11"><!--l. 644--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-4"  
+class="td11"><!--l. 645--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-5"  
+class="td11"><!--l. 646--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-6"  
+class="td11"><!--l. 647--><p class="noindent" ><span 
+class="ecrm-0700">External</span>
+ <span 
+class="ecrm-0700">and internal</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-7"  
+class="td11"><!--l. 648--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-8"  
+class="td11"><!--l. 649--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-3-9"  
+class="td11"><!--l. 650--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-1"  
+class="td11"><!--l. 652--><p class="noindent" ><span 
+class="ecrm-0700">Type</span>                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-2"  
+class="td11"><!--l. 653--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-3"  
+class="td11"><!--l. 654--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-4"  
+class="td11"><!--l. 655--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-5"  
+class="td11"><!--l. 656--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-6"  
+class="td11"><!--l. 657--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-7"  
+class="td11"><!--l. 658--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-8"  
+class="td11"><!--l. 659--><p class="noindent" ><span 
+class="ecrm-0700">Functional</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-4-9"  
+class="td11"><!--l. 660--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-5-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-4-5-1"  
+class="td11">                                 <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">HOW the service composition faces changes</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-6-1"  
+class="td11"><!--l. 664--><p class="noindent" ><span 
+class="ecrm-0700">Autonomy</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-6-2"  
+class="td11"><!--l. 665--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-6-3"  
+class="td11"><!--l. 666--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-6-4"  
+class="td11"><!--l. 667--><p class="noindent" ><span 
+class="ecrm-0700">Manual or</span>
+ <span 
+class="ecrm-0700">automated</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-6-5"  
+class="td11"><!--l. 668--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-6-6"  
+class="td11"><!--l. 669--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-6-7"  
+class="td11"><!--l. 670--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-6-8"  
+class="td11"><!--l. 671--><p class="noindent" ><span 
+class="ecrm-0700">Manual</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-6-9"  
+class="td11"><!--l. 672--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-7-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-7-1"  
+class="td11"><!--l. 674--><p class="noindent" ><span 
+class="ecrm-0700">Organization</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-7-2"  
+class="td11"><!--l. 675--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-7-3"  
+class="td11"><!--l. 676--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-7-4"  
+class="td11"><!--l. 677--><p class="noindent" ><span 
+class="ecrm-0700">Centralized</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-7-5"  
+class="td11"><!--l. 678--><p class="noindent" ><span 
+class="ecrm-0700">Centralized</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-7-6"  
+class="td11"><!--l. 679--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-7-7"  
+class="td11"><!--l. 680--><p class="noindent" ><span 
+class="ecrm-0700">Centralized</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-7-8"  
+class="td11"><!--l. 681--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-7-9"  
+class="td11"><!--l. 682--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-8-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-8-1"  
+class="td11"><!--l. 684--><p class="noindent" ><span 
+class="ecrm-0700">Scope</span>                 </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-8-2"  
+class="td11"><!--l. 685--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-8-3"  
+class="td11"><!--l. 686--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-8-4"  
+class="td11"><!--l. 687--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-8-5"  
+class="td11"><!--l. 688--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-8-6"  
+class="td11"><!--l. 689--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-8-7"  
+class="td11"><!--l. 690--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-8-8"  
+class="td11"><!--l. 691--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-8-9"  
+class="td11"><!--l. 692--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-9-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-9-1"  
+class="td11"><!--l. 694--><p class="noindent" ><span 
+class="ecrm-0700">Triggering</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-9-2"  
+class="td11"><!--l. 695--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-9-3"  
+class="td11"><!--l. 696--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-9-4"  
+class="td11"><!--l. 697--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-9-5"  
+class="td11"><!--l. 698--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-9-6"  
+class="td11"><!--l. 699--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-9-7"  
+class="td11"><!--l. 700--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-9-8"  
+class="td11"><!--l. 701--><p class="noindent" ><span 
+class="ecrm-0700">Manual</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-9-9"  
+class="td11"><!--l. 702--><p class="noindent" ><span 
+class="ecrm-0700">Time-trigger</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-10-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-10-1"  
+class="td11"><!--l. 704--><p class="noindent" ><span 
+class="ecrm-0700">Safety</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-10-2"  
+class="td11"><!--l. 705--><p class="noindent" ><span 
+class="ecrm-0700">Verified</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-10-3"  
+class="td11"><!--l. 706--><p class="noindent" ><span 
+class="ecrm-0700">Verified</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-10-4"  
+class="td11"><!--l. 707--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-10-5"  
+class="td11"><!--l. 708--><p class="noindent" ><span 
+class="ecrm-0700">Verified</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-10-6"  
+class="td11"><!--l. 709--><p class="noindent" ><span 
+class="ecrm-0700">Verified</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-10-7"  
+class="td11"><!--l. 710--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-10-8"  
+class="td11"><!--l. 711--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-10-9"  
+class="td11"><!--l. 712--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-11-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-11-1"  
+class="td11"><!--l. 714--><p class="noindent" ><span 
+class="ecrm-0700">Transparency</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-11-2"  
+class="td11"><!--l. 715--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-11-3"  
+class="td11"><!--l. 716--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-11-4"  
+class="td11"><!--l. 717--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-11-5"  
+class="td11"><!--l. 718--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-11-6"  
+class="td11"><!--l. 719--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-11-7"  
+class="td11"><!--l. 720--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-11-8"  
+class="td11"><!--l. 721--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-11-9"  
+class="td11"><!--l. 722--><p class="noindent" ><span 
+class="ecrm-0700">Transparent</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-12-"><td colspan="6" style="white-space:nowrap; text-align:center;" id="TBL-4-12-1"  
+class="td11">                      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHEN changes are carried out</span></div>                      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-12-7"  
+class="td11"><!--l. 725--><p class="noindent" >         </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-12-8"  
+class="td11"><!--l. 726--><p class="noindent" >         </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-12-9"  
+class="td11"><!--l. 728--><p class="noindent" >         </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-13-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-13-1"  
+class="td11"><!--l. 729--><p class="noindent" ><span 
+class="ecrm-0700">Frequency</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-13-2"  
+class="td11"><!--l. 730--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-13-3"  
+class="td11"><!--l. 731--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-13-4"  
+class="td11"><!--l. 732--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-13-5"  
+class="td11"><!--l. 733--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-13-6"  
+class="td11"><!--l. 734--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-13-7"  
+class="td11"><!--l. 735--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-13-8"  
+class="td11"><!--l. 736--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>
+ <span 
+class="ecrm-0700">(manual)</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-13-9"  
+class="td11"><!--l. 737--><p class="noindent" ><span 
+class="ecrm-0700">At periodic</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-14-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-14-1"  
+class="td11"><!--l. 739--><p class="noindent" ><span 
+class="ecrm-0700">Adaptation time</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-14-2"  
+class="td11"><!--l. 740--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-14-3"  
+class="td11"><!--l. 741--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-14-4"  
+class="td11"><!--l. 742--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-14-5"  
+class="td11"><!--l. 743--><p class="noindent" ><span 
+class="ecrm-0700">Long in</span>
+ <span 
+class="ecrm-0700">large</span>
+ <span 
+class="ecrm-0700">workflows</span>    </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-14-6"  
+class="td11"><!--l. 744--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-14-7"  
+class="td11"><!--l. 745--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-14-8"  
+class="td11"><!--l. 746--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-14-9"  
+class="td11"><!--l. 747--><p class="noindent" ><span 
+class="ecrm-0700">Short</span>          </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-15-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-15-1"  
+class="td11"><!--l. 749--><p class="noindent" ><span 
+class="ecrm-0700">Anticipation</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-15-2"  
+class="td11"><!--l. 750--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-15-3"  
+class="td11"><!--l. 751--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-15-4"  
+class="td11"><!--l. 752--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-15-5"  
+class="td11"><!--l. 753--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-15-6"  
+class="td11"><!--l. 754--><p class="noindent" ><span 
+class="ecrm-0700">Unforeseen</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-15-7"  
+class="td11"><!--l. 755--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-15-8"  
+class="td11"><!--l. 756--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">unforeseen</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-15-9"  
+class="td11"><!--l. 757--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-16-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-4-16-1"  
+class="td11">                                      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHERE changes are carried out</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-17-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-17-1"  
+class="td11"><!--l. 761--><p class="noindent" ><span 
+class="ecrm-0700">Generality</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-17-2"  
+class="td11"><!--l. 762--><p class="noindent" ><span 
+class="ecrm-0700">SOA</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-17-3"  
+class="td11"><!--l. 763--><p class="noindent" ><span 
+class="ecrm-0700">SOA</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-17-4"  
+class="td11"><!--l. 764--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-17-5"  
+class="td11"><!--l. 765--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-17-6"  
+class="td11"><!--l. 766--><p class="noindent" ><span 
+class="ecrm-0700">SOA</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-17-7"  
+class="td11"><!--l. 767--><p class="noindent" ><span 
+class="ecrm-0700">SOA</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-17-8"  
+class="td11"><!--l. 768--><p class="noindent" ><span 
+class="ecrm-0700">Services</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-17-9"  
+class="td11"><!--l. 769--><p class="noindent" ><span 
+class="ecrm-0700">Web</span>
+ <span 
+class="ecrm-0700">services</span>       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-18-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-18-1"  
+class="td11"><!--l. 771--><p class="noindent" ><span 
+class="ecrm-0700">Change level</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-18-2"  
+class="td11"><!--l. 772--><p class="noindent" ><span 
+class="ecrm-0700">Abstract</span>
+ <span 
+class="ecrm-0700">(set of</span>
+ <span 
+class="ecrm-0700">models) and</span>
+ <span 
+class="ecrm-0700">service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-18-3"  
+class="td11"><!--l. 773--><p class="noindent" ><span 
+class="ecrm-0700">Abstract</span>
+ <span 
+class="ecrm-0700">(architecture</span>
+ <span 
+class="ecrm-0700">model) and</span>
+ <span 
+class="ecrm-0700">architecture</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-18-4"  
+class="td11"><!--l. 774--><p class="noindent" ><span 
+class="ecrm-0700">Abstract</span>
+ <span 
+class="ecrm-0700">(set of</span>
+ <span 
+class="ecrm-0700">models) and</span>
+ <span 
+class="ecrm-0700">in the</span>
+ <span 
+class="ecrm-0700">service</span>
+ <span 
+class="ecrm-0700">composition</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-18-5"  
+class="td11"><!--l. 775--><p class="noindent" ><span 
+class="ecrm-0700">Abstract</span>
+ <span 
+class="ecrm-0700">(Markov</span>
+ <span 
+class="ecrm-0700">model) and</span>
+ <span 
+class="ecrm-0700">service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-18-6"  
+class="td11"><!--l. 776--><p class="noindent" ><span 
+class="ecrm-0700">Abstract</span>
+ <span 
+class="ecrm-0700">(set of</span>
+ <span 
+class="ecrm-0700">models) and</span>
+ <span 
+class="ecrm-0700">in the</span>
+ <span 
+class="ecrm-0700">architecture</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-18-7"  
+class="td11"><!--l. 777--><p class="noindent" ><span 
+class="ecrm-0700">Abstract</span>
+ <span 
+class="ecrm-0700">(behavioral</span>
+ <span 
+class="ecrm-0700">model) and</span>
+ <span 
+class="ecrm-0700">service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-18-8"  
+class="td11"><!--l. 778--><p class="noindent" ><span 
+class="ecrm-0700">Abstract</span>
+ <span 
+class="ecrm-0700">(set of</span>
+ <span 
+class="ecrm-0700">models) and</span>
+ <span 
+class="ecrm-0700">service</span>
+ <span 
+class="ecrm-0700">message</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-18-9"  
+class="td11"><!--l. 779--><p class="noindent" ><span 
+class="ecrm-0700">Abstract</span>
+ <span 
+class="ecrm-0700">(goal</span>
+ <span 
+class="ecrm-0700">model) and</span>
+ <span 
+class="ecrm-0700">service</span>
+ <span 
+class="ecrm-0700">message</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-19-"><td colspan="9" style="white-space:nowrap; text-align:center;" id="TBL-4-19-1"  
+class="td11">                                       <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">MATURITY of the approach</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-20-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-20-1"  
+class="td11"><!--l. 783--><p class="noindent" ><span 
+class="ecrm-0700">Applicability</span>
+ <span 
+class="ecrm-0700">scenarios</span>             </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-20-2"  
+class="td11"><!--l. 784--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-20-3"  
+class="td11"><!--l. 785--><p class="noindent" ><span 
+class="ecrm-0700">Apache</span>
+ <span 
+class="ecrm-0700">ServiceMix,</span>
+ <span 
+class="ecrm-0700">XTEAM</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-20-4"  
+class="td11"><!--l. 786--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-20-5"  
+class="td11"><!--l. 787--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-20-6"  
+class="td11"><!--l. 788--><p class="noindent" ><span 
+class="ecrm-0700">OSGi</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-20-7"  
+class="td11"><!--l. 789--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-20-8"  
+class="td11"><!--l. 790--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-20-9"  
+class="td11"><!--l. 791--><p class="noindent" ><span 
+class="ecrm-0700">Oracle</span>
+ <span 
+class="ecrm-0700">BPEL</span>
+ <span 
+class="ecrm-0700">Process</span>
+ <span 
+class="ecrm-0700">Manager</span>     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-21-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-21-1"  
+class="td11"><!--l. 793--><p class="noindent" ><span 
+class="ecrm-0700">Demonstrability</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-21-2"  
+class="td11"><!--l. 794--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-21-3"  
+class="td11"><!--l. 795--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-21-4"  
+class="td11"><!--l. 796--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-21-5"  
+class="td11"><!--l. 797--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-21-6"  
+class="td11"><!--l. 798--><p class="noindent" ><span 
+class="ecrm-0700">Code and</span>
+ <span 
+class="ecrm-0700">demonstrations</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-21-7"  
+class="td11"><!--l. 799--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-21-8"  
+class="td11"><!--l. 800--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-21-9"  
+class="td11"><!--l. 801--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-22-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-22-1"  
+class="td11"><!--l. 803--><p class="noindent" ><span 
+class="ecrm-0700">Life-cycle</span>
+ <span 
+class="ecrm-0700">support</span>              </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-22-2"  
+class="td11"><!--l. 804--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-22-3"  
+class="td11"><!--l. 805--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-22-4"  
+class="td11"><!--l. 806--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-22-5"  
+class="td11"><!--l. 807--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-22-6"  
+class="td11"><!--l. 808--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-22-7"  
+class="td11"><!--l. 809--><p class="noindent" ><span 
+class="ecrm-0700">Runtime</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-22-8"  
+class="td11"><!--l. 810--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-22-9"  
+class="td11"><!--l. 811--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-23-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-23-1"  
+class="td11"><!--l. 813--><p class="noindent" ><span 
+class="ecrm-0700">Evaluation</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-23-2"  
+class="td11"><!--l. 814--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-23-3"  
+class="td11"><!--l. 815--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-23-4"  
+class="td11"><!--l. 816--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-23-5"  
+class="td11"><!--l. 817--><p class="noindent" ><span 
+class="ecrm-0700">Simulations</span>
+ <span 
+class="ecrm-0700">and</span>
+ <span 
+class="ecrm-0700">examples</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-23-6"  
+class="td11"><!--l. 818--><p class="noindent" ><span 
+class="ecrm-0700">Case</span>
+ <span 
+class="ecrm-0700">studies</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-23-7"  
+class="td11"><!--l. 819--><p class="noindent" ><span 
+class="ecrm-0700">Simulations</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-23-8"  
+class="td11"><!--l. 820--><p class="noindent" ><span 
+class="ecrm-0700">Case</span>
+ <span 
+class="ecrm-0700">studies</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-4-23-9"  
+class="td11"><!--l. 821--><p class="noindent" ><span 
+class="ecrm-0700">Experiments</span></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-24-"><td  style="white-space:wrap; text-align:left;" id="TBL-4-24-1"  
+class="td11">             </td></tr></table>
+</div>
+ <div class="caption" 
+><span class="id">Table&#x00A0;3:  </span><span  
+class="content">Comparison  of  the  approaches  that  support  autonomic  service
+compositions through models at runtime (N/A means No Applicable, N/S means
+Not Specified).</span></div><!--tex4ht:label?: x1-3001r3 -->
+
+   </div><hr class="endfloat" />
+   <h3 class="sectionHead"><span class="titlemark">4.  </span> <a 
+ id="x1-40004"></a>Autonomic service compositions through DSPLs</h3>
+   <div class="table">
+
+<!--l. 837--><p class="indent" >   <a 
+ id="x1-4001r4"></a><hr class="float"><div class="float" 
+>
+
+<div class="tabular"> <table id="TBL-5" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-5-1g"><col 
+id="TBL-5-1"></colgroup><colgroup id="TBL-5-2g"><col 
+id="TBL-5-2"></colgroup><colgroup id="TBL-5-3g"><col 
+id="TBL-5-3"></colgroup><colgroup id="TBL-5-4g"><col 
+id="TBL-5-4"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-1-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-1-1"  
+class="td11"><!--l. 841--><p class="noindent" ><span 
+class="ecbx-0700">Dimension</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-1-2"  
+class="td11"><!--l. 842--><p class="noindent" ><span 
+class="ecbx-0700">CAPucine</span>
+ <span 
+class="ecbx-0700">(2009) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XParra:2009:CAD:1753235.1753254"><span 
+class="ecrm-0800">32</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-1-3"  
+class="td11"><!--l. 843--><p class="noindent" ><span 
+class="ecbx-0700">SOPL</span>
+ <span 
+class="ecbx-0700">(2010) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XLee:2010:CSP:1803938.1804087"><span 
+class="ecrm-0800">33</span></a><span 
+class="ecrm-0800">]</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-1-4"  
+class="td11"><!--l. 844--><p class="noindent" ><span 
+class="ecbx-0700">FM-DAMASCo</span>
+ <span 
+class="ecbx-0700">(2013) </span><span 
+class="ecrm-0800">[</span><a 
+href="#XCubo2013"><span 
+class="ecrm-0800">34</span></a><span 
+class="ecrm-0800">]</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-2-"><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-5-2-1"  
+class="td11">       <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHAT change is the cause for adaptation</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-3-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-3-1"  
+class="td11"><!--l. 849--><p class="noindent" ><span 
+class="ecrm-0700">Source</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-3-2"  
+class="td11"><!--l. 850--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-3-3"  
+class="td11"><!--l. 851--><p class="noindent" ><span 
+class="ecrm-0700">External</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-3-4"  
+class="td11"><!--l. 852--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-4-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-4-1"  
+class="td11"><!--l. 854--><p class="noindent" ><span 
+class="ecrm-0700">Type</span>                  </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-4-2"  
+class="td11"><!--l. 855--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-4-3"  
+class="td11"><!--l. 856--><p class="noindent" ><span 
+class="ecrm-0700">Non-functional</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-4-4"  
+class="td11"><!--l. 857--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-5-"><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-5-5-1"  
+class="td11">      <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">HOW the service composition faces changes</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-6-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-6-1"  
+class="td11"><!--l. 861--><p class="noindent" ><span 
+class="ecrm-0700">Autonomy</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-6-2"  
+class="td11"><!--l. 862--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-6-3"  
+class="td11"><!--l. 863--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-6-4"  
+class="td11"><!--l. 864--><p class="noindent" ><span 
+class="ecrm-0700">Automated</span>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-7-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-7-1"  
+class="td11"><!--l. 866--><p class="noindent" ><span 
+class="ecrm-0700">Organization</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-7-2"  
+class="td11"><!--l. 867--><p class="noindent" ><span 
+class="ecrm-0700">Decentral.</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-7-3"  
+class="td11"><!--l. 868--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-7-4"  
+class="td11"><!--l. 869--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-8-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-8-1"  
+class="td11"><!--l. 871--><p class="noindent" ><span 
+class="ecrm-0700">Scope</span>                 </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-8-2"  
+class="td11"><!--l. 872--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-8-3"  
+class="td11"><!--l. 873--><p class="noindent" ><span 
+class="ecrm-0700">Local</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-8-4"  
+class="td11"><!--l. 874--><p class="noindent" ><span 
+class="ecrm-0700">Global</span>        </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-9-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-9-1"  
+class="td11"><!--l. 876--><p class="noindent" ><span 
+class="ecrm-0700">Triggering</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-9-2"  
+class="td11"><!--l. 877--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-9-3"  
+class="td11"><!--l. 878--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-9-4"  
+class="td11"><!--l. 879--><p class="noindent" ><span 
+class="ecrm-0700">Event-trigger</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-10-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-10-1"  
+class="td11"><!--l. 881--><p class="noindent" ><span 
+class="ecrm-0700">Safety</span>                </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-10-2"  
+class="td11"><!--l. 882--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-10-3"  
+class="td11"><!--l. 883--><p class="noindent" ><span 
+class="ecrm-0700">Unverified</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-10-4"  
+class="td11"><!--l. 884--><p class="noindent" ><span 
+class="ecrm-0700">Verified</span>       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-11-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-11-1"  
+class="td11"><!--l. 886--><p class="noindent" ><span 
+class="ecrm-0700">Transparency</span>       </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-11-2"  
+class="td11"><!--l. 887--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-11-3"  
+class="td11"><!--l. 888--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-11-4"  
+class="td11"><!--l. 889--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-12-"><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-5-12-1"  
+class="td11">           <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHEN changes are carried out</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-13-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-13-1"  
+class="td11"><!--l. 893--><p class="noindent" ><span 
+class="ecrm-0700">Frequency</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-13-2"  
+class="td11"><!--l. 894--><p class="noindent" ><span 
+class="ecrm-0700">At arbitrary</span>
+ <span 
+class="ecrm-0700">intervals</span>      </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-13-3"  
+class="td11"><!--l. 895--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-13-4"  
+class="td11"><!--l. 896--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-14-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-14-1"  
+class="td11"><!--l. 898--><p class="noindent" ><span 
+class="ecrm-0700">Adaptation time</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-14-2"  
+class="td11"><!--l. 899--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-14-3"  
+class="td11"><!--l. 900--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-14-4"  
+class="td11"><!--l. 901--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-15-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-15-1"  
+class="td11"><!--l. 903--><p class="noindent" ><span 
+class="ecrm-0700">Anticipation</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-15-2"  
+class="td11"><!--l. 904--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-15-3"  
+class="td11"><!--l. 905--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-15-4"  
+class="td11"><!--l. 906--><p class="noindent" ><span 
+class="ecrm-0700">Foreseen</span>     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-16-"><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-5-16-1"  
+class="td11">          <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">WHERE changes are carried out</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-17-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-17-1"  
+class="td11"><!--l. 910--><p class="noindent" ><span 
+class="ecrm-0700">Generality</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-17-2"  
+class="td11"><!--l. 911--><p class="noindent" ><span 
+class="ecrm-0700">SOA</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-17-3"  
+class="td11"><!--l. 912--><p class="noindent" ><span 
+class="ecrm-0700">SOA</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-17-4"  
+class="td11"><!--l. 913--><p class="noindent" ><span 
+class="ecrm-0700">SOA</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-18-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-18-1"  
+class="td11"><!--l. 915--><p class="noindent" ><span 
+class="ecrm-0700">Change level</span>        </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-18-2"  
+class="td11"><!--l. 916--><p class="noindent" ><span 
+class="ecrm-0700">Bind/un-bind</span>
+ <span 
+class="ecrm-0700">components</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-18-3"  
+class="td11"><!--l. 917--><p class="noindent" ><span 
+class="ecrm-0700">Bricks</span>
+ <span 
+class="ecrm-0700">(components)</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-18-4"  
+class="td11"><!--l. 918--><p class="noindent" ><span 
+class="ecrm-0700">Service</span>
+ <span 
+class="ecrm-0700">message</span>      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-19-"><td colspan="4" style="white-space:nowrap; text-align:center;" id="TBL-5-19-1"  
+class="td11">            <div class="multicolumn"  style="white-space:nowrap; text-align:center;"><span 
+class="ecbx-0700">MATURITY of the approach</span></div>
+</td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-20-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-20-1"  
+class="td11"><!--l. 922--><p class="noindent" ><span 
+class="ecrm-0700">Applicability</span>
+ <span 
+class="ecrm-0700">scenarios</span>             </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-20-2"  
+class="td11"><!--l. 923--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-20-3"  
+class="td11"><!--l. 924--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-20-4"  
+class="td11"><!--l. 925--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-21-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-21-1"  
+class="td11"><!--l. 927--><p class="noindent" ><span 
+class="ecrm-0700">Demonstrability</span>   </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-21-2"  
+class="td11"><!--l. 928--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-21-3"  
+class="td11"><!--l. 929--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-21-4"  
+class="td11"><!--l. 930--><p class="noindent" ><span 
+class="ecrm-0700">N/S</span>           </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-22-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-22-1"  
+class="td11"><!--l. 932--><p class="noindent" ><span 
+class="ecrm-0700">Life-cycle</span>
+ <span 
+class="ecrm-0700">support</span>              </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-22-2"  
+class="td11"><!--l. 933--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-22-3"  
+class="td11"><!--l. 934--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-22-4"  
+class="td11"><!--l. 935--><p class="noindent" ><span 
+class="ecrm-0700">Design time</span>
+ <span 
+class="ecrm-0700">and runtime</span> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-23-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-23-1"  
+class="td11"><!--l. 937--><p class="noindent" ><span 
+class="ecrm-0700">Evaluation</span>          </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-23-2"  
+class="td11"><!--l. 938--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-23-3"  
+class="td11"><!--l. 939--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td><td  style="white-space:wrap; text-align:left;" id="TBL-5-23-4"  
+class="td11"><!--l. 940--><p class="noindent" ><span 
+class="ecrm-0700">Example</span>     </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-24-"><td  style="white-space:wrap; text-align:left;" id="TBL-5-24-1"  
+class="td11">             </td></tr></table></div>
+ <div class="caption" 
+><span class="id">Table&#x00A0;4:  </span><span  
+class="content">Comparison  of  the  approaches  that  support  autonomic  service
+compositions  through  DSPLs  (N/A  means  No  Applicable,  N/S  means  Not
+Specified).</span></div><!--tex4ht:label?: x1-4001r4 -->
+
+   </div><hr class="endfloat" />
+   </div>
+   <h3 class="likesectionHead"><a 
+ id="x1-50004"></a>References</h3>
+<a 
+ id="Q1-1-10"></a>
+    <div class="thebibliography">
+    <p class="bibitem" ><span class="biblabel">
+ <a 
+ id="XColombo2006"></a><span 
+class="ecrm-0900">[1]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">M.</span><span 
+class="ecrm-0900">&#x00A0;Colombo,  E.</span><span 
+class="ecrm-0900">&#x00A0;Di</span><span 
+class="ecrm-0900">&#x00A0;Nitto,  M.</span><span 
+class="ecrm-0900">&#x00A0;Mauri,  SCENE:  A  service  composition</span>
+    <span 
+class="ecrm-0900">execution environment supporting dynamic changes disciplined through rules, in:</span>
+    <span 
+class="ecrm-0900">A.</span><span 
+class="ecrm-0900">&#x00A0;Dan, W.</span><span 
+class="ecrm-0900">&#x00A0;Lamersdorf (Eds.), Service-Oriented Computing &#8211; ICSOC 2006, Vol.</span>
+    <span 
+class="ecrm-0900">4294 of Lecture Notes in Computer Science, Springer Berlin / Heidelberg, 2006,</span>
+    <span 
+class="ecrm-0900">pp. 191&#8211;202.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ <a 
+ id="XCharfi:2007:AAE:1285732.1285748"></a><span 
+class="ecrm-0900">[2]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">A.</span><span 
+class="ecrm-0900">&#x00A0;Charfi, M.</span><span 
+class="ecrm-0900">&#x00A0;Mezini, AO4BPEL: An aspect-oriented extension to BPEL,</span>
+    <span 
+class="ecrm-0900">World Wide Web 10</span><span 
+class="ecrm-0900">&#x00A0;(3) (2007) 309&#8211;344.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ <a 
+ id="XKoning:2009:VSV:1465741.1466068"></a><span 
+class="ecrm-0900">[3]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">M.</span><span 
+class="ecrm-0900">&#x00A0;Koning,  C.-a.  Sun,  M.</span><span 
+class="ecrm-0900">&#x00A0;Sinnema,  P.</span><span 
+class="ecrm-0900">&#x00A0;Avgeriou,  VxBPEL:  Supporting</span>
+    <span 
+class="ecrm-0900">variability for web services in BPEL, Inf. Softw. Technol. 51 (2009) 258&#8211;269.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ <a 
+ id="XBaresi:2011:SBP:1978260.1978534"></a><span 
+class="ecrm-0900">[4]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">L.</span><span 
+class="ecrm-0900">&#x00A0;Baresi, S.</span><span 
+class="ecrm-0900">&#x00A0;Guinea, Self-supervising BPEL processes, IEEE Trans. Softw.</span>
+    <span 
+class="ecrm-0900">Eng. 37 (2011) 247&#8211;263.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ <a 
+ id="XZeng:2004:QMW:987527.987638"></a><span 
+class="ecrm-0900">[5]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">L.</span><span 
+class="ecrm-0900">&#x00A0;Zeng,                          B.</span><span 
+class="ecrm-0900">&#x00A0;Benatallah,                          A.</span><span 
+class="ecrm-0900">&#x00A0;H.H.</span><span 
+class="ecrm-0900">&#x00A0;Ngu,</span>
+    <span 
+class="ecrm-0900">M.</span><span 
+class="ecrm-0900">&#x00A0;Dumas, J.</span><span 
+class="ecrm-0900">&#x00A0;Kalagnanam, H.</span><span 
+class="ecrm-0900">&#x00A0;Chang, QoS-aware middleware for web services</span>
+    <span 
+class="ecrm-0900">composition, IEEE Trans. Softw. Eng. 30</span><span 
+class="ecrm-0900">&#x00A0;(5) (2004) 311&#8211;327.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ <a 
+ id="XBerbner:2006:HQW:1172963.1173158"></a><span 
+class="ecrm-0900">[6]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">R.</span><span 
+class="ecrm-0900">&#x00A0;Berbner,  M.</span><span 
+class="ecrm-0900">&#x00A0;Spahn,  N.</span><span 
+class="ecrm-0900">&#x00A0;Repp,  O.</span><span 
+class="ecrm-0900">&#x00A0;Heckmann,  R.</span><span 
+class="ecrm-0900">&#x00A0;Steinmetz,  Heuristics</span>
+    <span 
+class="ecrm-0900">for  QoS-aware  web  service  composition,  in:  Proceedings  of  the  2006  IEEE</span>
+    <span 
+class="ecrm-0900">International Conference on Web Services, ICWS &#8217;06, IEEE Computer Society,</span>
+    <span 
+class="ecrm-0900">Washington, DC, USA, 2006, pp. 72&#8211;82.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ <a 
+ id="X4144649"></a><span 
+class="ecrm-0900">[7]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">O.</span><span 
+class="ecrm-0900">&#x00A0;Ezenwoye,  S.</span><span 
+class="ecrm-0900">&#x00A0;Sadjadi,  RobustBPEL2:  transparent  autonomization  in</span>
+    <span 
+class="ecrm-0900">business  processes  through  dynamic  proxies,  in:  Proceedings  of  the  8th</span>
+    <span 
+class="ecrm-0900">International  Symposium  on  Autonomous  Decentralized  Systems,  ISADS  &#8217;07,</span>
+    <span 
+class="ecrm-0900">2007, pp. 17&#8211;24.</span>
+
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ <a 
+ id="XArdagna:2007:PFE:1308450.1309102"></a><span 
+class="ecrm-0900">[8]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">D.</span><span 
+class="ecrm-0900">&#x00A0;Ardagna,  M.</span><span 
+class="ecrm-0900">&#x00A0;Comuzzi,  E.</span><span 
+class="ecrm-0900">&#x00A0;Mussi,  B.</span><span 
+class="ecrm-0900">&#x00A0;Pernici,  P.</span><span 
+class="ecrm-0900">&#x00A0;Plebani,  PAWS:  a</span>
+    <span 
+class="ecrm-0900">framework  for  executing  adaptive  web-service  processes,  IEEE  Softw.  24</span><span 
+class="ecrm-0900">&#x00A0;(6)</span>
+    <span 
+class="ecrm-0900">(2007) 39&#8211;46.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+ <a 
+ id="X4181707"></a><span 
+class="ecrm-0900">[9]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">D.</span><span 
+class="ecrm-0900">&#x00A0;Ardagna, B.</span><span 
+class="ecrm-0900">&#x00A0;Pernici, Adaptive service composition in flexible processes,</span>
+    <span 
+class="ecrm-0900">Software Engineering, IEEE Transactions on 33</span><span 
+class="ecrm-0900">&#x00A0;(6) (2007) 369&#8211;384.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XMoser:2008:NMS:1367497.1367607"></a><span 
+class="ecrm-0900">[10]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">O.</span><span 
+class="ecrm-0900">&#x00A0;Moser, F.</span><span 
+class="ecrm-0900">&#x00A0;Rosenberg, S.</span><span 
+class="ecrm-0900">&#x00A0;Dustdar, Non-intrusive monitoring and service</span>
+    <span 
+class="ecrm-0900">adaptation for WS-BPEL, in: Proceedings of the 17th international conference on</span>
+    <span 
+class="ecrm-0900">World Wide Web, WWW &#8217;08, ACM, New York, NY, USA, 2008, pp. 815&#8211;824.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XMosincat:2008:TRA:1484716.1484736"></a><span 
+class="ecrm-0900">[11]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">A.</span><span 
+class="ecrm-0900">&#x00A0;Mosincat,  W.</span><span 
+class="ecrm-0900">&#x00A0;Binder,  Transparent  runtime  adaptability  for  BPEL</span>
+    <span 
+class="ecrm-0900">processes, in: Proceedings of the 6th International Conference on Service-Oriented</span>
+    <span 
+class="ecrm-0900">Computing, ICSOC &#8217;08, Springer-Verlag, Berlin, Heidelberg, 2008, pp. 241&#8211;255.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XCanfora20081754"></a><span 
+class="ecrm-0900">[12]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">G.</span><span 
+class="ecrm-0900">&#x00A0;Canfora,  M.</span><span 
+class="ecrm-0900">&#x00A0;D.  Penta,  R.</span><span 
+class="ecrm-0900">&#x00A0;Esposito,  M.</span><span 
+class="ecrm-0900">&#x00A0;L.  Villani,  A  framework  for</span>
+    <span 
+class="ecrm-0900">QoS-aware binding and re-binding of composite web services, Journal of Systems</span>
+    <span 
+class="ecrm-0900">and Software 81</span><span 
+class="ecrm-0900">&#x00A0;(10) (2008) 1754 &#8211; 1769.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X5175827"></a><span 
+class="ecrm-0900">[13]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">D.</span><span 
+class="ecrm-0900">&#x00A0;Karastoyanova,    F.</span><span 
+class="ecrm-0900">&#x00A0;Leymann,    BPEL&#8217;n&#8217;Aspects:    Adapting    service</span>
+    <span 
+class="ecrm-0900">orchestration logic, in: Proceedings of the 2009 IEEE International Conference on</span>
+    <span 
+class="ecrm-0900">Web Services, ICWS &#8217;09, 2009, pp. 222&#8211;229.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XSonntag2011"></a><span 
+class="ecrm-0900">[14]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span>
+    <span 
+class="ecrm-0900">M.</span><span 
+class="ecrm-0900">&#x00A0;Sonntag, D.</span><span 
+class="ecrm-0900">&#x00A0;Karastoyanova, Compensation of adapted service orchestration</span>
+    <span 
+class="ecrm-0900">logic in BPEL&#8217;n&#8217;aspects, in: Proceedings of the 9th International Conference on</span>
+    <span 
+class="ecrm-0900">Business Process Management, BPM &#8217;11, Springer-Verlag, 2011, pp. 1&#8211;16.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XCardellini2010"></a><span 
+class="ecrm-0900">[15]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">V.</span><span 
+class="ecrm-0900">&#x00A0;Cardellini,                        E.</span><span 
+class="ecrm-0900">&#x00A0;Casalicchio,                        V.</span><span 
+class="ecrm-0900">&#x00A0;Grassi,</span>
+    <span 
+class="ecrm-0900">F.</span><span 
+class="ecrm-0900">&#x00A0;Lo</span><span 
+class="ecrm-0900">&#x00A0;Presti, Adaptive management of composite services under percentile-based</span>
+    <span 
+class="ecrm-0900">service level agreements, in: P.</span><span 
+class="ecrm-0900">&#x00A0;Maglio, M.</span><span 
+class="ecrm-0900">&#x00A0;Weske, J.</span><span 
+class="ecrm-0900">&#x00A0;Yang, M.</span><span 
+class="ecrm-0900">&#x00A0;Fantinato (Eds.),</span>
+    <span 
+class="ecrm-0900">Service-Oriented Computing, Vol. 6470 of Lecture Notes in Computer Science,</span>
+    <span 
+class="ecrm-0900">Springer Berlin / Heidelberg, 2010, pp. 381&#8211;395.</span>
+    </p>
+
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X6546122"></a><span 
+class="ecrm-0900">[16]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">C.</span><span 
+class="ecrm-0900">&#x00A0;Wang,  J.</span><span 
+class="ecrm-0900">&#x00A0;L.  Pazat,  A  chemistry-inspired  middleware  for  self-adaptive</span>
+    <span 
+class="ecrm-0900">service orchestration and choreography, in: Cluster, Cloud and Grid Computing</span>
+    <span 
+class="ecrm-0900">(CCGrid),  2013  13th  IEEE/ACM  International  Symposium  on,  2013,  pp.</span>
+    <span 
+class="ecrm-0900">426&#8211;433. doi:10.1109/CCGrid.2013.51.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XParejo20144211"></a><span 
+class="ecrm-0900">[17]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span>
+    <span 
+class="ecrm-0900">J.</span><span 
+class="ecrm-0900">&#x00A0;A. Parejo, S.</span><span 
+class="ecrm-0900">&#x00A0;Segura, P.</span><span 
+class="ecrm-0900">&#x00A0;Fernandez, A.</span><span 
+class="ecrm-0900">&#x00A0;Ruiz-Cort</span><span 
+class="ecrm-0900">és, Qos-aware web services</span>
+    <span 
+class="ecrm-0900">composition using GRASP with path relinking, Expert Systems with Applications</span>
+    <span 
+class="ecrm-0900">41</span><span 
+class="ecrm-0900">&#x00A0;(9) (2014) 4211 &#8211; 4223. doi:http://dx.doi.org/10.1016/j.eswa.2013.12.036.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XYu2015533"></a><span 
+class="ecrm-0900">[18]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">J.</span><span 
+class="ecrm-0900">&#x00A0;Yu, Q.</span><span 
+class="ecrm-0900">&#x00A0;Z. Sheng, J.</span><span 
+class="ecrm-0900">&#x00A0;K. Swee, J.</span><span 
+class="ecrm-0900">&#x00A0;Han, C.</span><span 
+class="ecrm-0900">&#x00A0;Liu, T.</span><span 
+class="ecrm-0900">&#x00A0;H. Noor, Model-driven</span>
+    <span 
+class="ecrm-0900">development of adaptive web service processes with aspects and rules, Journal of</span>
+    <span 
+class="ecrm-0900">Computer and System Sciences 81</span><span 
+class="ecrm-0900">&#x00A0;(3) (2015) 533 &#8211; 552, special Issue on selected</span>
+    <span 
+class="ecrm-0900">papers from the 4th International Conference on Ambient Systems, Networks and</span>
+    <span 
+class="ecrm-0900">Technologies (ANT 2013). doi:http://dx.doi.org/10.1016/j.jcss.2014.11.008.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X7231019"></a><span 
+class="ecrm-0900">[19]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">P.</span><span 
+class="ecrm-0900">&#x00A0;Xie, Y.</span><span 
+class="ecrm-0900">&#x00A0;Song, Y.</span><span 
+class="ecrm-0900">&#x00A0;Wang, Y.</span><span 
+class="ecrm-0900">&#x00A0;Luo, Y.</span><span 
+class="ecrm-0900">&#x00A0;Zhang, A solution for web service</span>
+    <span 
+class="ecrm-0900">composition  based  on  logic-interface  orchestration,  in:  Computer  Supported</span>
+    <span 
+class="ecrm-0900">Cooperative Work in Design (CSCWD), 2015 IEEE 19th International Conference</span>
+    <span 
+class="ecrm-0900">on, 2015, pp. 555&#8211;560. doi:10.1109/CSCWD.2015.7231019.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X7185446"></a><span 
+class="ecrm-0900">[20]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">C.</span><span 
+class="ecrm-0900">&#x00A0;Lv,  W.</span><span 
+class="ecrm-0900">&#x00A0;Jiang,  S.</span><span 
+class="ecrm-0900">&#x00A0;Hu,  J.</span><span 
+class="ecrm-0900">&#x00A0;Wang,  G.</span><span 
+class="ecrm-0900">&#x00A0;Lu,  Z.</span><span 
+class="ecrm-0900">&#x00A0;Liu,  Efficient  dynamic</span>
+    <span 
+class="ecrm-0900">evolution  of  service  composition,  IEEE  Transactions  on  Services  Computing</span>
+    <span 
+class="ecrm-0900">PP</span><span 
+class="ecrm-0900">&#x00A0;(99) (2015) 1&#8211;1. doi:10.1109/TSC.2015.2466544.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XWang201696"></a><span 
+class="ecrm-0900">[21]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">H.</span><span 
+class="ecrm-0900">&#x00A0;Wang, X.</span><span 
+class="ecrm-0900">&#x00A0;Wang, X.</span><span 
+class="ecrm-0900">&#x00A0;Hu, X.</span><span 
+class="ecrm-0900">&#x00A0;Zhang, M.</span><span 
+class="ecrm-0900">&#x00A0;Gu, A multi-agent reinforcement</span>
+    <span 
+class="ecrm-0900">learning  approach  to  dynamic  service  composition,  Information  Sciences  363</span>
+    <span 
+class="ecrm-0900">(2016) 96 &#8211; 119. doi:http://dx.doi.org/10.1016/j.ins.2016.05.002.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X6705665"></a><span 
+class="ecrm-0900">[22]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">A.</span><span 
+class="ecrm-0900">&#x00A0;Moustafa,    M.</span><span 
+class="ecrm-0900">&#x00A0;Zhang,    Q.</span><span 
+class="ecrm-0900">&#x00A0;Bai,    Trustworthy    stigmergic    service</span>
+    <span 
+class="ecrm-0900">compositionand adaptation in decentralized environments, IEEE Transactions on</span>
+    <span 
+class="ecrm-0900">Services Computing 9</span><span 
+class="ecrm-0900">&#x00A0;(2) (2016) 317&#8211;329. doi:10.1109/TSC.2014.2298873.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XBosloper:2005:CSS:1114281.1114449"></a><span 
+class="ecrm-0900">[23]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">I.</span><span 
+class="ecrm-0900">&#x00A0;Bosloper, J.</span><span 
+class="ecrm-0900">&#x00A0;Siljee, J.</span><span 
+class="ecrm-0900">&#x00A0;Nijhuis, D.</span><span 
+class="ecrm-0900">&#x00A0;Hammer, Creating self-adaptive service</span>
+    <span 
+class="ecrm-0900">systems with DySOA, in: Proceedings of the 3rd European Conference on Web</span>
+    <span 
+class="ecrm-0900">Services, ECOWS &#8217;05, IEEE Computer Society, Washington, DC, USA, 2005, pp.</span>
+    <span 
+class="ecrm-0900">95&#8211;104.</span>
+
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XSiljee:2005:DMS:2113865.2113891"></a><span 
+class="ecrm-0900">[24]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">J.</span><span 
+class="ecrm-0900">&#x00A0;Siljee,  I.</span><span 
+class="ecrm-0900">&#x00A0;Bosloper,  J.</span><span 
+class="ecrm-0900">&#x00A0;Nijhuis,  D.</span><span 
+class="ecrm-0900">&#x00A0;Hammer,  DySOA:  making  service</span>
+    <span 
+class="ecrm-0900">systems  self-adaptive,  in:  Proceedings  of  the  3rd  international  conference  on</span>
+    <span 
+class="ecrm-0900">service-oriented computing, ICSOC &#8217;05, Springer-Verlag, Berlin, Heidelberg, 2005,</span>
+    <span 
+class="ecrm-0900">pp. 255&#8211;268.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X10.1109/MS.2011.22"></a><span 
+class="ecrm-0900">[25]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">D.</span><span 
+class="ecrm-0900">&#x00A0;Menasce,  H.</span><span 
+class="ecrm-0900">&#x00A0;Gomaa,  S.</span><span 
+class="ecrm-0900">&#x00A0;Malek,  J.</span><span 
+class="ecrm-0900">&#x00A0;Sousa,  SASSY:  A  framework  for</span>
+    <span 
+class="ecrm-0900">self-architecting service-oriented systems, IEEE Software 28 (2011) 78&#8211;85.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XFranch:2011:GAS:2056316.2057053"></a><span 
+class="ecrm-0900">[26]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span>
+    <span 
+class="ecrm-0900">X.</span><span 
+class="ecrm-0900">&#x00A0;Franch, P.</span><span 
+class="ecrm-0900">&#x00A0;Grunbacher, M.</span><span 
+class="ecrm-0900">&#x00A0;Oriol, B.</span><span 
+class="ecrm-0900">&#x00A0;Burgstaller, D.</span><span 
+class="ecrm-0900">&#x00A0;Dhungana, L.</span><span 
+class="ecrm-0900">&#x00A0;Lopez,</span>
+    <span 
+class="ecrm-0900">J.</span><span 
+class="ecrm-0900">&#x00A0;Marco,  J.</span><span 
+class="ecrm-0900">&#x00A0;Pimentel,  Goal-driven  adaptation  of  service-based  systems  from</span>
+    <span 
+class="ecrm-0900">runtime  monitoring  data,  in:  Proceedings  of  the  2011  IEEE  35th  Annual</span>
+    <span 
+class="ecrm-0900">Computer Software and Applications Conference Workshops, COMPSACW &#8217;11,</span>
+    <span 
+class="ecrm-0900">IEEE Computer Society, Washington, DC, USA, 2011, pp. 458&#8211;463.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X10.1109/TSE.2010.92"></a><span 
+class="ecrm-0900">[27]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">R.</span><span 
+class="ecrm-0900">&#x00A0;Calinescu, L.</span><span 
+class="ecrm-0900">&#x00A0;Grunske, M.</span><span 
+class="ecrm-0900">&#x00A0;Kwiatkowska, R.</span><span 
+class="ecrm-0900">&#x00A0;Mirandola, G.</span><span 
+class="ecrm-0900">&#x00A0;Tamburrelli,</span>
+    <span 
+class="ecrm-0900">Dynamic  QoS  management  and  optimization  in  service-based  systems,  IEEE</span>
+    <span 
+class="ecrm-0900">Transactions on Software Engineering 37 (2011) 387&#8211;409.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XHallsteinsen20122840"></a><span 
+class="ecrm-0900">[28]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">S.</span><span 
+class="ecrm-0900">&#x00A0;Hallsteinsen, K.</span><span 
+class="ecrm-0900">&#x00A0;Geihs, N.</span><span 
+class="ecrm-0900">&#x00A0;Paspallis, F.</span><span 
+class="ecrm-0900">&#x00A0;Eliassen, G.</span><span 
+class="ecrm-0900">&#x00A0;Horn, J.</span><span 
+class="ecrm-0900">&#x00A0;Lorenzo,</span>
+    <span 
+class="ecrm-0900">A.</span><span 
+class="ecrm-0900">&#x00A0;Mamelli, G.</span><span 
+class="ecrm-0900">&#x00A0;Papadopoulos, A development framework and methodology for</span>
+    <span 
+class="ecrm-0900">self-adapting  applications  in  ubiquitous  computing  environments,  Journal  of</span>
+    <span 
+class="ecrm-0900">Systems and Software 85</span><span 
+class="ecrm-0900">&#x00A0;(12) (2012) 2840 &#8211; 2859.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X5963694"></a><span 
+class="ecrm-0900">[29]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">V.</span><span 
+class="ecrm-0900">&#x00A0;Cardellini,                                                               E.</span><span 
+class="ecrm-0900">&#x00A0;Casalicchio,</span>
+    <span 
+class="ecrm-0900">V.</span><span 
+class="ecrm-0900">&#x00A0;Grassi, S.</span><span 
+class="ecrm-0900">&#x00A0;Iannucci, F.</span><span 
+class="ecrm-0900">&#x00A0;Lo</span><span 
+class="ecrm-0900">&#x00A0;Presti, R.</span><span 
+class="ecrm-0900">&#x00A0;Mirandola, MOSES: A framework for</span>
+    <span 
+class="ecrm-0900">QoS driven runtime adaptation of service-oriented systems, Software Engineering,</span>
+    <span 
+class="ecrm-0900">IEEE Transactions on 38</span><span 
+class="ecrm-0900">&#x00A0;(5) (2012) 1138&#8211;1159.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X6649702"></a><span 
+class="ecrm-0900">[30]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">M.</span><span 
+class="ecrm-0900">&#x00A0;Hussein,  J.</span><span 
+class="ecrm-0900">&#x00A0;Han,  J.</span><span 
+class="ecrm-0900">&#x00A0;Yu,  A.</span><span 
+class="ecrm-0900">&#x00A0;Colman,  Enabling  runtime  evolution  of</span>
+    <span 
+class="ecrm-0900">context-aware  adaptive  services,  in:  Services  Computing  (SCC),  2013  IEEE</span>
+    <span 
+class="ecrm-0900">International Conference on, 2013, pp. 248&#8211;255. doi:10.1109/SCC.2013.77.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="X6705644"></a><span 
+class="ecrm-0900">[31]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">B.</span><span 
+class="ecrm-0900">&#x00A0;Chen, X.</span><span 
+class="ecrm-0900">&#x00A0;Peng, Y.</span><span 
+class="ecrm-0900">&#x00A0;Yu, W.</span><span 
+class="ecrm-0900">&#x00A0;Zhao, Requirements-driven self-optimization</span>
+    <span 
+class="ecrm-0900">of  composite  services  using  feedback  control,  IEEE  Transactions  on  Services</span>
+    <span 
+class="ecrm-0900">Computing 8</span><span 
+class="ecrm-0900">&#x00A0;(1) (2015) 107&#8211;120. doi:10.1109/TSC.2014.2298866.</span>
+
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XParra:2009:CAD:1753235.1753254"></a><span 
+class="ecrm-0900">[32]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">C.</span><span 
+class="ecrm-0900">&#x00A0;Parra,    X.</span><span 
+class="ecrm-0900">&#x00A0;Blanc,    L.</span><span 
+class="ecrm-0900">&#x00A0;Duchien,    Context    awareness    for    dynamic</span>
+    <span 
+class="ecrm-0900">service-oriented product lines, in: Proceedings of the 13th International Software</span>
+    <span 
+class="ecrm-0900">Product Line Conference, SPLC &#8217;09, Carnegie Mellon University, Pittsburgh, PA,</span>
+    <span 
+class="ecrm-0900">USA, 2009, pp. 131&#8211;140.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XLee:2010:CSP:1803938.1804087"></a><span 
+class="ecrm-0900">[33]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">J.</span><span 
+class="ecrm-0900">&#x00A0;Lee,   G.</span><span 
+class="ecrm-0900">&#x00A0;Kotonya,   Combining   service-orientation   with   product   line</span>
+    <span 
+class="ecrm-0900">engineering, IEEE Softw. 27 (2010) 35&#8211;41.</span>
+    </p>
+    <p class="bibitem" ><span class="biblabel">
+<a 
+ id="XCubo2013"></a><span 
+class="ecrm-0900">[34]</span> <span class="bibsp"><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span><span 
+class="ecrm-0900">&#x00A0;</span></span></span><span 
+class="ecrm-0900">J.</span><span 
+class="ecrm-0900">&#x00A0;Cubo,    N.</span><span 
+class="ecrm-0900">&#x00A0;Gamez,    L.</span><span 
+class="ecrm-0900">&#x00A0;Fuentes,    E.</span><span 
+class="ecrm-0900">&#x00A0;Pimentel,    Composition    and</span>
+    <span 
+class="ecrm-0900">Self-Adaptation of Service-Based Systems with Feature Models, Springer Berlin</span>
+    <span 
+class="ecrm-0900">Heidelberg, Berlin, Heidelberg, 2013, pp. 326&#8211;342.</span>
+</p>
+    </div>
+    
+</body></html> 
+
+
+
